@@ -3,10 +3,6 @@ server:
 
 
 spring:
-  servlet:
-    multipart:
-      max-file-size: 100MB
-      max-request-size: 100MB
 
   datasource:
     url: jdbc:mysql://localhost:3306/std_upload?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
@@ -38,7 +34,11 @@ spring:
     default-property-inclusion: NON_EMPTY
     fail_on_unknown_properties: true
     date-format: yyyy-MM-dd HH:mm:ss
+
+  devtools:
+    restart:
+      exclude: log/**
 logging:
   level:
     com.stdwork_management.mapper: debug
-  file: C:/stdwork_log/stdwork.log
+  file: log/stdwork.log
