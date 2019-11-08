@@ -73,7 +73,7 @@ public class BackEndController {
 
     @GetMapping("getExcelModel")
     @Token(accountType = "admin")
-    @ApiOperation("获取模板")
+    @ApiOperation("获取导入学生数据的excel模板")
     public void getExcelModel(HttpServletResponse response){
         AdminPO user1 = (AdminPO)ThreadLocalUtil.get("user");
         File file = null;
