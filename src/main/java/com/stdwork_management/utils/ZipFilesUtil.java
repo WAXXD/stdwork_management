@@ -200,6 +200,7 @@ public class ZipFilesUtil {
         new File(unzipDestPath + dest).listFiles( f -> {
             String filename = f.getName();
             if(!StringUtils.equals(filename, "temp") &&
+                    !StringUtils.equals(filename, ".init") &&
                     StringUtils.equals(filename.substring(0, filename.length() - 9), unZipFileName.substring(0, unZipFileName.lastIndexOf(".")))){
                 try {
                     FileUtils.deleteDirectory(f);
