@@ -39,6 +39,7 @@ import java.util.stream.Collectors;
 @RequestMapping("client")
 @ApiIgnore
 @Slf4j
+@CrossOrigin
 public class ClientController {
 
     @Autowired
