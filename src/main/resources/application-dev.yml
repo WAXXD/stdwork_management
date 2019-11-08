@@ -1,0 +1,45 @@
+server:
+  port: 8912
+
+
+spring:
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+
+  datasource:
+    #    url: jdbc:mysql://localhost:3306/std_upload?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://localhost:3306/std_upload?useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: 123456m
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    druid:
+      initial-size: 5
+      max-active: 10
+      min-idle: 5
+      max-wait: 6000
+      test-on-borrow: false
+      test-on-return: false
+      test-while-idle: true
+      filters: stat,wall,default
+      time-between-eviction-runs-millis: 2000
+      min-evictable-idle-time-millis: 300000
+      max-evictable-idle-time-millis: 6000000
+      validation-query: SELECT 'x'
+      filter:
+        stat:
+          log-slow-sql: true
+
+  http:
+    converters:
+      preferred-json-mapper: jackson
+
+  jackson:
+    default-property-inclusion: NON_EMPTY
+    fail_on_unknown_properties: true
+    date-format: yyyy-MM-dd HH:mm:ss
+logging:
+  level:
+    com.stdwork_management.mapper: debug
+
