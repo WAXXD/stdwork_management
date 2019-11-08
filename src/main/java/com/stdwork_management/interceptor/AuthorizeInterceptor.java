@@ -27,7 +27,8 @@ public class AuthorizeInterceptor implements HandlerInterceptor {
         Token methodAnnotation = handlerMethod.getMethodAnnotation(Token.class);
         if (methodAnnotation != null){
             if (methodAnnotation.requireAuthorize() ){
-                String token = request.getHeader("token");
+                String token = request.getHeader("token") == null ? request.getParameter("token") : request.getHeader("token");
+
                 Cookie[] cookies = request.getCookies();
                 String tokenFromCookie = "";
                 for(Cookie cookie : cookies){

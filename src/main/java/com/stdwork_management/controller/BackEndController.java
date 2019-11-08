@@ -16,6 +16,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
@@ -28,6 +29,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.io.File;
 import java.io.IOException;
+import java.net.URLDecoder;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -67,6 +69,26 @@ public class BackEndController {
             throw new UserDefinedException(9999, "传输文件为空");
         }
         return new Result().setData(backEndService.addExcelInputStdAccount(file));
+    }
+
+    @GetMapping("getExcelModel")
+    @Token(accountType = "admin")
+    @ApiOperation("获取模板")
+    public void getExcelModel(HttpServletResponse response){
+        AdminPO user1 = (AdminPO)ThreadLocalUtil.get("user");
+        File file = null;
+        try {
+            file = new File(URLDecoder.decode(BackEndController.class.getClassLoader().getResource("学生目录.xlsx").getPath(), "utf-8"));
+            response.setContentType("application/x-download");
+            response.addHeader("Content-Disposition", "attachment; filename=" + new String(file.getName().getBytes("gbk"), "iso8859-1"));
+            FileUtils.copyFile(file, response.getOutputStream());
+        } catch (IOException e) {
+            e.printStackTrace();
+            log.info("后台用户{}下载模板失败{}",user1.getAdminName(), file.getName());
+            throw new UserDefinedException(9999, "下载模板异常");
+
+        }
+        log.info("后台用户{}下载模板{}",user1.getAdminName(), file.getName());
     }
 
     @GetMapping("stdList")
