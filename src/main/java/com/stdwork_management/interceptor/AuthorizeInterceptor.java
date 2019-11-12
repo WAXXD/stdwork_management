@@ -2,9 +2,11 @@ package com.stdwork_management.interceptor;
 
 import com.stdwork_management.base.annotation.Token;
 import com.stdwork_management.exception.UserDefinedException;
+import com.stdwork_management.utils.RedisUtils;
 import com.stdwork_management.utils.ThreadLocalUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -22,13 +24,16 @@ import javax.servlet.http.HttpServletResponse;
 @Slf4j
 public class AuthorizeInterceptor implements HandlerInterceptor {
 
+    @Autowired
+    private RedisUtils redisUtils;
+
     private boolean validateAuthorize(HttpServletRequest request, HttpServletResponse response, Object handler) {
         HandlerMethod handlerMethod = (HandlerMethod) handler;
+
         Token methodAnnotation = handlerMethod.getMethodAnnotation(Token.class);
         if (methodAnnotation != null){
             if (methodAnnotation.requireAuthorize() ){
                 String token = request.getHeader("token") == null ? request.getParameter("token") : request.getHeader("token");
-
                 Cookie[] cookies = request.getCookies();
                 String tokenFromCookie = "";
                 if(cookies != null){
@@ -38,19 +43,23 @@ public class AuthorizeInterceptor implements HandlerInterceptor {
                         }
                     }
                 }
-                String sessionToken;
+                String cachedToken;
                 Object user;
                 if(StringUtils.equals(methodAnnotation.accountType(), "std")){
-                    sessionToken = (String)request.getSession().getAttribute("token");
-                    user = request.getSession().getAttribute("user");
+//                    cachedToken = (String)request.getSession().getAttribute("token");
+//                    user = request.getSession().getAttribute("user");
+                    cachedToken =  (String)redisUtils.get("token");
+                    user = redisUtils.get("user");
                 } else if (StringUtils.equals(methodAnnotation.accountType(), "admin")){
-                    sessionToken = (String)request.getSession().getAttribute("admin_token");
-                    user = request.getSession().getAttribute("admin_user");
+//                    cachedToken = (String)request.getSession().getAttribute("admin_token");
+//                    user = request.getSession().getAttribute("admin_user");
+                    cachedToken =  (String) redisUtils.get("admin_token");
+                    user = redisUtils.get("admin_user");
                 } else {
                     throw new UserDefinedException(9999, "您未登录到系统,请登录后访问");
                 }
                 if(StringUtils.isNotBlank(token) && token != null){
-                    if(StringUtils.equals(token,  sessionToken) || StringUtils.equals(sessionToken, tokenFromCookie)){
+                    if(StringUtils.equals(token,  cachedToken) || StringUtils.equals(cachedToken, tokenFromCookie)){
                         if(user == null){
                             throw new UserDefinedException(9999, "登录token过期, 请重新登录");
                         }

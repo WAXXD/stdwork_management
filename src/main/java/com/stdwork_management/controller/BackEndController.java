@@ -8,10 +8,7 @@ import com.stdwork_management.base.annotation.Token;
 import com.stdwork_management.bean.*;
 import com.stdwork_management.exception.UserDefinedException;
 import com.stdwork_management.service.BackEndService;
-import com.stdwork_management.utils.BindingResultUtil;
-import com.stdwork_management.utils.ListFileUtil;
-import com.stdwork_management.utils.MD5Util;
-import com.stdwork_management.utils.ThreadLocalUtil;
+import com.stdwork_management.utils.*;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -37,6 +34,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 /**
@@ -50,7 +48,7 @@ import java.util.stream.Collectors;
 @RequestMapping("backend")
 @Api(tags = "2 后台接口API")
 @Slf4j
-@CrossOrigin(allowCredentials = "true")
+@CrossOrigin
 public class BackEndController {
 
     @Autowired
@@ -61,6 +59,9 @@ public class BackEndController {
 
     @Autowired
     private Gson gson;
+
+    @Autowired
+    private RedisUtils redisUtils;
 
 
     @PostMapping("inputExcel")
@@ -145,11 +146,14 @@ public class BackEndController {
         if (adminPOS == null || adminPOS.size() < 1){
             throw new UserDefinedException(9999, "登录失败管理员名称或密码错误");
         }
+
         log.info("后台用户{}登录到系统", adminLoginVO.getAdminName());
         String token = MD5Util.getMD5(adminPOS.get(0).toString() + new Date().getTime());
-        request.getSession().setAttribute("admin_token",token);
-        request.getSession().setAttribute("admin_user", adminPOS.get(0));
-        request.getSession().setMaxInactiveInterval(30 * 60);
+        redisUtils.set("admin_token", token, 30 * 60, TimeUnit.SECONDS);
+        redisUtils.set("admin_user", adminPOS.get(0), 30 * 60, TimeUnit.SECONDS);
+//        request.getSession().setAttribute("admin_token",token);
+//        request.getSession().setAttribute("admin_user", adminPOS.get(0));
+//        request.getSession().setMaxInactiveInterval(30 * 60);
         return new Result().setData(token);
     }
 

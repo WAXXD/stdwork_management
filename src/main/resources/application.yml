@@ -42,5 +42,18 @@ spring:
       max-file-size: 100MB
       max-request-size: 100MB
 
+  #redis 配置
+  redis:
+    prefix: std_adm_
+    database: 0
+    host: localhost
+    password: 123456r
+    port: 6379
+    max-active: 8
+    max-wait: -1
+    max-idle: 8
+    min-idle: 0
+    timeout: 5000
+
 mybatis:
   mapper-locations: classpath*:mybatis/mapper/*.xml

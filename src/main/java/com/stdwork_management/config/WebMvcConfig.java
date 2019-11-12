@@ -41,9 +41,14 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.
-                addInterceptor(new AuthorizeInterceptor()).
+                addInterceptor(authorizeInterceptor()).
                 addPathPatterns("/**").
                 excludePathPatterns("/swagger-resources/**", "/webjars/**", "/v2/**", "/swagger-ui.html/**");
+    }
+
+    @Bean
+    public AuthorizeInterceptor authorizeInterceptor(){
+        return new AuthorizeInterceptor();
     }
 
 //    @PostConstruct

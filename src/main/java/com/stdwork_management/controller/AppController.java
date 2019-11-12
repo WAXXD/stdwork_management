@@ -32,6 +32,7 @@ import java.nio.file.Paths;
 import java.util.Date;
 import java.util.List;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 /**
  * description:
@@ -55,6 +56,9 @@ public class AppController {
 
     @Autowired
     private String workPath;
+
+    @Autowired
+    private RedisUtils redisUtils;
 
     @GetMapping("test")
     public Result test(HttpServletRequest request){
@@ -83,8 +87,10 @@ public class AppController {
         }
         log.info("{}同学登录到系统", stdAccountPOS.get(0).getName());
         String token = MD5Util.getMD5(stdAccountPOS.get(0).toString() + new Date().getTime());
-        request.getSession().setAttribute("token",token);
-        request.getSession().setAttribute("user", stdAccountPOS.get(0));
+//        request.getSession().setAttribute("token",token);
+//        request.getSession().setAttribute("user", stdAccountPOS.get(0));
+        redisUtils.set("token", token, 30 * 60, TimeUnit.SECONDS);
+        redisUtils.set("user", stdAccountPOS.get(0), 30 * 60, TimeUnit.SECONDS);
         request.getSession().setMaxInactiveInterval(30 * 60);
         return new Result().setData(token);
     }

@@ -2,5 +2,19 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.stdwork_management.mapper.LocalFileSysMapper">
 
+    <resultMap id="baseResult" type="com.stdwork_management.bean.LocalFileSysPO">
+        <id column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="pid" jdbcType="VARCHAR" property="pid"/>
+        <result column="filename" jdbcType="VARCHAR" property="filename"/>
+        <result column="path" jdbcType="VARCHAR" property="path"/>
+        <result column="parent_path" jdbcType="VARCHAR" property="parentPath"/>
+        <result column="type" jdbcType="VARCHAR" property="type"/>
+        <result column="create_time" jdbcType="VARCHAR" property="createTime"/>
+        <result column="update_time" jdbcType="VARCHAR" property="updateTime"/>
+        <result column="level" jdbcType="VARCHAR" property="level"/>
+    </resultMap>
 
+    <select id="fullIndexSearch" parameterType="java.lang.String" resultMap="baseResult">
+        select * from local_file_sys where match(path) against(#{searchKey})
+    </select>
 </mapper>
