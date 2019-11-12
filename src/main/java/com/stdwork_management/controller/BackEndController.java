@@ -50,7 +50,7 @@ import java.util.stream.Collectors;
 @RequestMapping("backend")
 @Api(tags = "2 后台接口API")
 @Slf4j
-@CrossOrigin
+@CrossOrigin(allowCredentials = "true")
 public class BackEndController {
 
     @Autowired
@@ -61,6 +61,7 @@ public class BackEndController {
 
     @Autowired
     private Gson gson;
+
 
     @PostMapping("inputExcel")
     @Token(accountType = "admin")

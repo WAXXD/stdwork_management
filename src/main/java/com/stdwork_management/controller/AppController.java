@@ -44,7 +44,7 @@ import java.util.Properties;
 @RequestMapping("app")
 @Api(tags = "3 app API")
 @Slf4j
-@CrossOrigin
+@CrossOrigin(allowCredentials = "true")
 public class AppController {
 
     @Autowired
