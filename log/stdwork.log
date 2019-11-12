@@ -845,3 +845,437 @@ Field error in object 'stdUserBackendManageVO' on field 'graduationTime': reject
 2019-11-12 16:29:55.522 DEBUG 74704 --- [http-nio-8912-exec-6] c.s.m.StdAccountMapper.selectByExample   : ==>  Preparing: SELECT id , name , std_no , graduation_time , create_time , update_time , graduated FROM std_account WHERE ( graduation_time < ? ) and ( graduated = ? ) LIMIT ? 
 2019-11-12 16:29:55.523 DEBUG 74704 --- [http-nio-8912-exec-6] c.s.m.StdAccountMapper.selectByExample   : ==> Parameters: 2019-09-20 00:00:00.0(Timestamp), 0(Byte), 20(Integer)
 2019-11-12 16:29:55.525 DEBUG 74704 --- [http-nio-8912-exec-6] c.s.m.StdAccountMapper.selectByExample   : <==      Total: 1
+2019-11-12 16:34:44.648  INFO 74704 --- [http-nio-8912-exec-3] c.s.interceptor.AuthorizeInterceptor     : into authorize interceptor...
+2019-11-12 16:34:44.695  INFO 74704 --- [http-nio-8912-exec-5] c.s.interceptor.AuthorizeInterceptor     : into authorize interceptor...
+2019-11-12 16:45:40.961  INFO 74704 --- [Thread-21] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'asyncServiceExecutor'
+2019-11-12 16:45:40.972  INFO 74704 --- [Thread-21] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2019-11-12 16:45:52.843 DEBUG 76064 --- [background-preinit] .h.v.m.ResourceBundleMessageInterpolator : Loaded expression factory via original TCCL
+2019-11-12 16:45:53.133  INFO 76064 --- [restartedMain] c.s.StdworkManagementApplication         : Starting StdworkManagementApplication on LKgod with PID 76064 (E:\idea_workspace\stdwork_management\target\classes started by lzhangmoony in E:\idea_workspace\stdwork_management)
+2019-11-12 16:45:53.135  INFO 76064 --- [restartedMain] c.s.StdworkManagementApplication         : The following profiles are active: prod
+2019-11-12 16:45:53.395  INFO 76064 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-11-12 16:45:53.395  INFO 76064 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-11-12 16:45:55.235  WARN 76064 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.stdwork_management]' package. Please check your configuration.
+2019-11-12 16:45:56.084  INFO 76064 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$8a27bd4d] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-11-12 16:45:57.333  INFO 76064 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8912 (http)
+2019-11-12 16:45:57.388  INFO 76064 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-11-12 16:45:57.389  INFO 76064 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.26]
+2019-11-12 16:45:57.410  INFO 76064 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : An older version [1.2.21] of the APR based Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.23]
+2019-11-12 16:45:57.411  INFO 76064 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : Loaded APR based Apache Tomcat Native library [1.2.21] using APR version [1.6.5].
+2019-11-12 16:45:57.415  INFO 76064 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2019-11-12 16:45:57.416  INFO 76064 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2019-11-12 16:45:57.425  INFO 76064 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1a  20 Nov 2018]
+2019-11-12 16:45:57.722  INFO 76064 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-11-12 16:45:57.723  INFO 76064 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 4327 ms
+2019-11-12 16:45:58.532  INFO 76064 --- [restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2019-11-12 16:46:13.058  INFO 76400 --- [restartedMain] c.s.StdworkManagementApplication         : Starting StdworkManagementApplication on LKgod with PID 76400 (E:\idea_workspace\stdwork_management\target\classes started by lzhangmoony in E:\idea_workspace\stdwork_management)
+2019-11-12 16:46:13.064  INFO 76400 --- [restartedMain] c.s.StdworkManagementApplication         : The following profiles are active: prod
+2019-11-12 16:46:13.197  INFO 76400 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-11-12 16:46:13.198  INFO 76400 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-11-12 16:46:25.993  INFO 75980 --- [restartedMain] c.s.StdworkManagementApplication         : Starting StdworkManagementApplication on LKgod with PID 75980 (E:\idea_workspace\stdwork_management\target\classes started by lzhangmoony in E:\idea_workspace\stdwork_management)
+2019-11-12 16:46:25.997  INFO 75980 --- [restartedMain] c.s.StdworkManagementApplication         : The following profiles are active: prod
+2019-11-12 16:46:26.113  INFO 75980 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-11-12 16:46:26.114  INFO 75980 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-11-12 16:46:27.601  WARN 75980 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.stdwork_management]' package. Please check your configuration.
+2019-11-12 16:46:28.069  INFO 75980 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$77cba7dc] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-11-12 16:46:28.523  INFO 75980 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8912 (http)
+2019-11-12 16:46:28.549  INFO 75980 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-11-12 16:46:28.550  INFO 75980 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.26]
+2019-11-12 16:46:28.561  INFO 75980 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : An older version [1.2.21] of the APR based Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.23]
+2019-11-12 16:46:28.562  INFO 75980 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : Loaded APR based Apache Tomcat Native library [1.2.21] using APR version [1.6.5].
+2019-11-12 16:46:28.562  INFO 75980 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2019-11-12 16:46:28.563  INFO 75980 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2019-11-12 16:46:28.568  INFO 75980 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1a  20 Nov 2018]
+2019-11-12 16:46:28.687  INFO 75980 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-11-12 16:46:28.688  INFO 75980 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2574 ms
+2019-11-12 16:46:28.835  INFO 75980 --- [restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2019-11-12 16:46:30.079  INFO 75980 --- [restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2019-11-12 16:46:30.679  INFO 75980 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService
+2019-11-12 16:46:30.681  INFO 75980 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'asyncServiceExecutor'
+2019-11-12 16:46:31.151  INFO 75980 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-11-12 16:46:31.381  INFO 75980 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2019-11-12 16:46:31.660  INFO 75980 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2019-11-12 16:46:31.682  INFO 75980 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2019-11-12 16:46:31.725  INFO 75980 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2019-11-12 16:46:31.952  INFO 75980 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: changePasswordUsingPOST_1
+2019-11-12 16:46:31.954  INFO 75980 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: downloadUsingGET_1
+2019-11-12 16:46:31.958  INFO 75980 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: downloadPathUsingGET_1
+2019-11-12 16:46:31.964  INFO 75980 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: fileListUsingGET_1
+2019-11-12 16:46:31.973  INFO 75980 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: loginUsingPOST_1
+2019-11-12 16:46:32.050  INFO 75980 --- [restartedMain] c.s.listener.ApplicationRunListener      : 查看初始化数据是否存在
+2019-11-12 16:46:32.105 DEBUG 75980 --- [restartedMain] c.s.mapper.LocalFileSysMapper.select     : ==>  Preparing: SELECT id,pid,filename,level,path,parent_path,type,create_time,update_time FROM local_file_sys WHERE id = ? AND path = ? 
+2019-11-12 16:46:32.273 DEBUG 75980 --- [restartedMain] c.s.mapper.LocalFileSysMapper.select     : ==> Parameters: 1(String), E:/z04/(String)
+2019-11-12 16:46:32.302 DEBUG 75980 --- [restartedMain] c.s.mapper.LocalFileSysMapper.select     : <==      Total: 1
+2019-11-12 16:46:32.305  INFO 75980 --- [restartedMain] c.s.listener.ApplicationRunListener      : 存在不需要初始化1 -> LocalFileSysPO(id=1, pid=null, filename=null, level=null, path=E:/z04/, parentPath=null, type=null, createTime=null, updateTime=null)
+2019-11-12 16:46:32.341  INFO 75980 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8912 (http) with context path ''
+2019-11-12 16:46:32.345  INFO 75980 --- [restartedMain] c.s.StdworkManagementApplication         : Started StdworkManagementApplication in 7.523 seconds (JVM running for 9.623)
+2019-11-12 16:46:37.518  INFO 75980 --- [http-nio-8912-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-11-12 16:46:37.519  INFO 75980 --- [http-nio-8912-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-11-12 16:46:37.545  INFO 75980 --- [http-nio-8912-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 25 ms
+2019-11-12 16:46:37.585  INFO 75980 --- [http-nio-8912-exec-1] c.s.interceptor.AuthorizeInterceptor     : into authorize interceptor...
+2019-11-12 16:46:37.835  WARN 75980 --- [http-nio-8912-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.validation.BindException: org.springframework.validation.BeanPropertyBindingResult: 1 errors
+Field error in object 'stdUserBackendManageVO' on field 'graduationTime': rejected value [2019/09/20]; codes [typeMismatch.stdUserBackendManageVO.graduationTime,typeMismatch.graduationTime,typeMismatch.java.util.Date,typeMismatch]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [stdUserBackendManageVO.graduationTime,graduationTime]; arguments []; default message [graduationTime]]; default message [Failed to convert property value of type 'java.lang.String' to required type 'java.util.Date' for property 'graduationTime'; nested exception is java.lang.IllegalArgumentException: Could not parse date: Unparseable date: "2019/09/20"]]
+2019-11-12 16:47:30.666  INFO 75980 --- [Thread-22] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'asyncServiceExecutor'
+2019-11-12 16:47:30.674  INFO 75980 --- [Thread-22] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2019-11-12 16:47:40.642  INFO 76292 --- [restartedMain] c.s.StdworkManagementApplication         : Starting StdworkManagementApplication on LKgod with PID 76292 (E:\idea_workspace\stdwork_management\target\classes started by lzhangmoony in E:\idea_workspace\stdwork_management)
+2019-11-12 16:47:40.649  INFO 76292 --- [restartedMain] c.s.StdworkManagementApplication         : The following profiles are active: prod
+2019-11-12 16:47:40.817  INFO 76292 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-11-12 16:47:40.818  INFO 76292 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-11-12 16:47:42.512  WARN 76292 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.stdwork_management]' package. Please check your configuration.
+2019-11-12 16:47:42.967  INFO 76292 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$a0fe2b28] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-11-12 16:47:43.425  INFO 76292 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8912 (http)
+2019-11-12 16:47:43.464  INFO 76292 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-11-12 16:47:43.465  INFO 76292 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.26]
+2019-11-12 16:47:43.477  INFO 76292 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : An older version [1.2.21] of the APR based Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.23]
+2019-11-12 16:47:43.477  INFO 76292 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : Loaded APR based Apache Tomcat Native library [1.2.21] using APR version [1.6.5].
+2019-11-12 16:47:43.478  INFO 76292 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2019-11-12 16:47:43.478  INFO 76292 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2019-11-12 16:47:43.483  INFO 76292 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1a  20 Nov 2018]
+2019-11-12 16:47:43.621  INFO 76292 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-11-12 16:47:43.622  INFO 76292 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2804 ms
+2019-11-12 16:47:43.772  INFO 76292 --- [restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2019-11-12 16:47:45.074  INFO 76292 --- [restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2019-11-12 16:47:45.671  INFO 76292 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService
+2019-11-12 16:47:45.672  INFO 76292 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'asyncServiceExecutor'
+2019-11-12 16:47:46.119  INFO 76292 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-11-12 16:47:46.361  INFO 76292 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2019-11-12 16:47:46.672  INFO 76292 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2019-11-12 16:47:46.697  INFO 76292 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2019-11-12 16:47:46.743  INFO 76292 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2019-11-12 16:47:46.979  INFO 76292 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: changePasswordUsingPOST_1
+2019-11-12 16:47:46.981  INFO 76292 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: downloadUsingGET_1
+2019-11-12 16:47:46.985  INFO 76292 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: downloadPathUsingGET_1
+2019-11-12 16:47:46.991  INFO 76292 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: fileListUsingGET_1
+2019-11-12 16:47:46.999  INFO 76292 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: loginUsingPOST_1
+2019-11-12 16:47:47.057  INFO 76292 --- [restartedMain] c.s.listener.ApplicationRunListener      : 查看初始化数据是否存在
+2019-11-12 16:47:47.109 DEBUG 76292 --- [restartedMain] c.s.mapper.LocalFileSysMapper.select     : ==>  Preparing: SELECT id,pid,filename,level,path,parent_path,type,create_time,update_time FROM local_file_sys WHERE id = ? AND path = ? 
+2019-11-12 16:47:47.262 DEBUG 76292 --- [restartedMain] c.s.mapper.LocalFileSysMapper.select     : ==> Parameters: 1(String), E:/z04/(String)
+2019-11-12 16:47:47.294 DEBUG 76292 --- [restartedMain] c.s.mapper.LocalFileSysMapper.select     : <==      Total: 1
+2019-11-12 16:47:47.297  INFO 76292 --- [restartedMain] c.s.listener.ApplicationRunListener      : 存在不需要初始化1 -> LocalFileSysPO(id=1, pid=null, filename=null, level=null, path=E:/z04/, parentPath=null, type=null, createTime=null, updateTime=null)
+2019-11-12 16:47:47.332  INFO 76292 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8912 (http) with context path ''
+2019-11-12 16:47:47.336  INFO 76292 --- [restartedMain] c.s.StdworkManagementApplication         : Started StdworkManagementApplication in 7.884 seconds (JVM running for 10.012)
+2019-11-12 16:47:50.962  INFO 76292 --- [http-nio-8912-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-11-12 16:47:50.962  INFO 76292 --- [http-nio-8912-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-11-12 16:47:50.972  INFO 76292 --- [http-nio-8912-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 10 ms
+2019-11-12 16:47:50.999  INFO 76292 --- [http-nio-8912-exec-2] c.s.interceptor.AuthorizeInterceptor     : into authorize interceptor...
+2019-11-12 16:47:51.136  WARN 76292 --- [http-nio-8912-exec-2] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.validation.BindException: org.springframework.validation.BeanPropertyBindingResult: 1 errors
+Field error in object 'stdUserBackendManageVO' on field 'graduationTime': rejected value [2019/09/20]; codes [typeMismatch.stdUserBackendManageVO.graduationTime,typeMismatch.graduationTime,typeMismatch.java.util.Date,typeMismatch]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [stdUserBackendManageVO.graduationTime,graduationTime]; arguments []; default message [graduationTime]]; default message [Failed to convert property value of type 'java.lang.String' to required type 'java.util.Date' for property 'graduationTime'; nested exception is java.lang.IllegalArgumentException: Could not parse date: Unparseable date: "2019/09/20"]]
+2019-11-12 16:48:01.399  INFO 76292 --- [http-nio-8912-exec-1] c.s.interceptor.AuthorizeInterceptor     : into authorize interceptor...
+2019-11-12 16:48:01.406  WARN 76292 --- [http-nio-8912-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.validation.BindException: org.springframework.validation.BeanPropertyBindingResult: 1 errors
+Field error in object 'stdUserBackendManageVO' on field 'graduationTime': rejected value [2019-09-20]; codes [typeMismatch.stdUserBackendManageVO.graduationTime,typeMismatch.graduationTime,typeMismatch.java.util.Date,typeMismatch]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [stdUserBackendManageVO.graduationTime,graduationTime]; arguments []; default message [graduationTime]]; default message [Failed to convert property value of type 'java.lang.String' to required type 'java.util.Date' for property 'graduationTime'; nested exception is java.lang.IllegalArgumentException: Could not parse date: Unparseable date: "2019-09-20"]]
+2019-11-12 16:48:22.058  INFO 76292 --- [http-nio-8912-exec-3] c.s.interceptor.AuthorizeInterceptor     : into authorize interceptor...
+2019-11-12 16:48:22.201 DEBUG 76292 --- [http-nio-8912-exec-3] c.s.m.S.selectByExample_COUNT            : ==>  Preparing: SELECT count(0) FROM std_account WHERE (graduated = ? AND name = ? AND std_no = ?) 
+2019-11-12 16:48:22.206 DEBUG 76292 --- [http-nio-8912-exec-3] c.s.m.S.selectByExample_COUNT            : ==> Parameters: 0(Byte), (String), (String)
+2019-11-12 16:48:22.208 DEBUG 76292 --- [http-nio-8912-exec-3] c.s.m.S.selectByExample_COUNT            : <==      Total: 1
+2019-11-12 16:48:39.040  INFO 76292 --- [http-nio-8912-exec-4] c.s.interceptor.AuthorizeInterceptor     : into authorize interceptor...
+2019-11-12 16:48:39.055 DEBUG 76292 --- [http-nio-8912-exec-4] c.s.m.S.selectByExample_COUNT            : ==>  Preparing: SELECT count(0) FROM std_account WHERE (graduated = ? AND name = ? AND std_no = ?) 
+2019-11-12 16:48:39.057 DEBUG 76292 --- [http-nio-8912-exec-4] c.s.m.S.selectByExample_COUNT            : ==> Parameters: 0(Byte), (String), (String)
+2019-11-12 16:48:39.059 DEBUG 76292 --- [http-nio-8912-exec-4] c.s.m.S.selectByExample_COUNT            : <==      Total: 1
+2019-11-12 16:48:52.034  INFO 76292 --- [http-nio-8912-exec-5] c.s.interceptor.AuthorizeInterceptor     : into authorize interceptor...
+2019-11-12 16:49:06.217 DEBUG 76292 --- [http-nio-8912-exec-5] c.s.m.S.selectByExample_COUNT            : ==>  Preparing: SELECT count(0) FROM std_account WHERE (graduated = ? AND name = ? AND std_no = ?) 
+2019-11-12 16:49:06.217 DEBUG 76292 --- [http-nio-8912-exec-5] c.s.m.S.selectByExample_COUNT            : ==> Parameters: 0(Byte), (String), (String)
+2019-11-12 16:49:06.219 DEBUG 76292 --- [http-nio-8912-exec-5] c.s.m.S.selectByExample_COUNT            : <==      Total: 1
+2019-11-12 16:49:29.262  INFO 76292 --- [Thread-22] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'asyncServiceExecutor'
+2019-11-12 16:49:29.271  INFO 76292 --- [Thread-22] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2019-11-12 16:49:43.860  INFO 76684 --- [restartedMain] c.s.StdworkManagementApplication         : Starting StdworkManagementApplication on LKgod with PID 76684 (E:\idea_workspace\stdwork_management\target\classes started by lzhangmoony in E:\idea_workspace\stdwork_management)
+2019-11-12 16:49:43.865  INFO 76684 --- [restartedMain] c.s.StdworkManagementApplication         : The following profiles are active: prod
+2019-11-12 16:49:44.057  INFO 76684 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-11-12 16:49:44.057  INFO 76684 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-11-12 16:49:45.683  WARN 76684 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.stdwork_management]' package. Please check your configuration.
+2019-11-12 16:49:46.398  INFO 76684 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$b7b4976b] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-11-12 16:49:47.492  INFO 76684 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8912 (http)
+2019-11-12 16:49:47.790  INFO 76684 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-11-12 16:49:47.791  INFO 76684 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.26]
+2019-11-12 16:49:47.843  INFO 76684 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : An older version [1.2.21] of the APR based Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.23]
+2019-11-12 16:49:47.855  INFO 76684 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : Loaded APR based Apache Tomcat Native library [1.2.21] using APR version [1.6.5].
+2019-11-12 16:49:47.855  INFO 76684 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2019-11-12 16:49:47.863  INFO 76684 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2019-11-12 16:49:47.890  INFO 76684 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1a  20 Nov 2018]
+2019-11-12 16:49:48.400  INFO 76684 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-11-12 16:49:48.400  INFO 76684 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 4343 ms
+2019-11-12 16:49:49.536  INFO 76684 --- [restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2019-11-12 16:49:52.550  INFO 76684 --- [restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2019-11-12 16:49:53.790  INFO 76684 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService
+2019-11-12 16:49:53.793  INFO 76684 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'asyncServiceExecutor'
+2019-11-12 16:49:55.078  INFO 76684 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-11-12 16:49:55.997  INFO 76684 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2019-11-12 16:49:56.673  INFO 76684 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2019-11-12 16:49:56.715  INFO 76684 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2019-11-12 16:49:56.792  INFO 76684 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2019-11-12 16:49:57.302  INFO 76684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: changePasswordUsingPOST_1
+2019-11-12 16:49:57.308  INFO 76684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: downloadUsingGET_1
+2019-11-12 16:49:57.319  INFO 76684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: downloadPathUsingGET_1
+2019-11-12 16:49:57.334  INFO 76684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: fileListUsingGET_1
+2019-11-12 16:49:57.352  INFO 76684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: loginUsingPOST_1
+2019-11-12 16:49:57.519  INFO 76684 --- [restartedMain] c.s.listener.ApplicationRunListener      : 查看初始化数据是否存在
+2019-11-12 16:49:57.603 DEBUG 76684 --- [restartedMain] c.s.mapper.LocalFileSysMapper.select     : ==>  Preparing: SELECT id,pid,filename,level,path,parent_path,type,create_time,update_time FROM local_file_sys WHERE id = ? AND path = ? 
+2019-11-12 16:49:57.834 DEBUG 76684 --- [restartedMain] c.s.mapper.LocalFileSysMapper.select     : ==> Parameters: 1(String), E:/z04/(String)
+2019-11-12 16:49:57.875 DEBUG 76684 --- [restartedMain] c.s.mapper.LocalFileSysMapper.select     : <==      Total: 1
+2019-11-12 16:49:57.881  INFO 76684 --- [restartedMain] c.s.listener.ApplicationRunListener      : 存在不需要初始化1 -> LocalFileSysPO(id=1, pid=null, filename=null, level=null, path=E:/z04/, parentPath=null, type=null, createTime=null, updateTime=null)
+2019-11-12 16:49:57.950  INFO 76684 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8912 (http) with context path ''
+2019-11-12 16:49:57.956  INFO 76684 --- [restartedMain] c.s.StdworkManagementApplication         : Started StdworkManagementApplication in 15.466 seconds (JVM running for 18.913)
+2019-11-12 16:49:58.118  INFO 76684 --- [http-nio-8912-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-11-12 16:49:58.119  INFO 76684 --- [http-nio-8912-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-11-12 16:49:58.131  INFO 76684 --- [http-nio-8912-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 12 ms
+2019-11-12 16:49:58.175  INFO 76684 --- [http-nio-8912-exec-1] c.s.interceptor.AuthorizeInterceptor     : into authorize interceptor...
+2019-11-12 16:50:02.692 DEBUG 76684 --- [http-nio-8912-exec-1] c.s.m.S.selectByExample_COUNT            : ==>  Preparing: SELECT count(0) FROM std_account WHERE (graduated = ?) 
+2019-11-12 16:50:02.699 DEBUG 76684 --- [http-nio-8912-exec-1] c.s.m.S.selectByExample_COUNT            : ==> Parameters: 0(Byte)
+2019-11-12 16:50:02.705 DEBUG 76684 --- [http-nio-8912-exec-1] c.s.m.S.selectByExample_COUNT            : <==      Total: 1
+2019-11-12 16:50:02.712 DEBUG 76684 --- [http-nio-8912-exec-1] c.s.m.StdAccountMapper.selectByExample   : ==>  Preparing: SELECT id , name , std_no , graduation_time , create_time , update_time , graduated FROM std_account WHERE ( graduated = ? ) LIMIT ? 
+2019-11-12 16:50:02.722 DEBUG 76684 --- [http-nio-8912-exec-1] c.s.m.StdAccountMapper.selectByExample   : ==> Parameters: 0(Byte), 20(Integer)
+2019-11-12 16:50:02.728 DEBUG 76684 --- [http-nio-8912-exec-1] c.s.m.StdAccountMapper.selectByExample   : <==      Total: 2
+2019-11-12 16:50:13.934  INFO 76684 --- [http-nio-8912-exec-2] c.s.interceptor.AuthorizeInterceptor     : into authorize interceptor...
+2019-11-12 16:50:13.955  WARN 76684 --- [http-nio-8912-exec-2] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.validation.BindException: org.springframework.validation.BeanPropertyBindingResult: 1 errors
+Field error in object 'stdUserBackendManageVO' on field 'graduationTime': rejected value [2019-09-30]; codes [typeMismatch.stdUserBackendManageVO.graduationTime,typeMismatch.graduationTime,typeMismatch.java.util.Date,typeMismatch]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [stdUserBackendManageVO.graduationTime,graduationTime]; arguments []; default message [graduationTime]]; default message [Failed to convert property value of type 'java.lang.String' to required type 'java.util.Date' for property 'graduationTime'; nested exception is org.springframework.core.convert.ConversionFailedException: Failed to convert from type [java.lang.String] to type [@io.swagger.annotations.ApiModelProperty java.util.Date] for value '2019-09-30'; nested exception is java.lang.IllegalArgumentException]]
+2019-11-12 16:50:30.182  INFO 76684 --- [http-nio-8912-exec-3] c.s.interceptor.AuthorizeInterceptor     : into authorize interceptor...
+2019-11-12 16:50:30.203 DEBUG 76684 --- [http-nio-8912-exec-3] c.s.m.S.selectByExample_COUNT            : ==>  Preparing: SELECT count(0) FROM std_account WHERE (graduation_time < ?) AND (graduated = ?) 
+2019-11-12 16:50:30.211 DEBUG 76684 --- [http-nio-8912-exec-3] c.s.m.S.selectByExample_COUNT            : ==> Parameters: 2019-09-30 00:00:00.0(Timestamp), 0(Byte)
+2019-11-12 16:50:30.213 DEBUG 76684 --- [http-nio-8912-exec-3] c.s.m.S.selectByExample_COUNT            : <==      Total: 1
+2019-11-12 16:50:30.214 DEBUG 76684 --- [http-nio-8912-exec-3] c.s.m.StdAccountMapper.selectByExample   : ==>  Preparing: SELECT id , name , std_no , graduation_time , create_time , update_time , graduated FROM std_account WHERE ( graduation_time < ? ) and ( graduated = ? ) LIMIT ? 
+2019-11-12 16:50:30.216 DEBUG 76684 --- [http-nio-8912-exec-3] c.s.m.StdAccountMapper.selectByExample   : ==> Parameters: 2019-09-30 00:00:00.0(Timestamp), 0(Byte), 20(Integer)
+2019-11-12 16:50:30.220 DEBUG 76684 --- [http-nio-8912-exec-3] c.s.m.StdAccountMapper.selectByExample   : <==      Total: 1
+2019-11-12 16:55:11.346  INFO 76684 --- [http-nio-8912-exec-7] c.s.interceptor.AuthorizeInterceptor     : into authorize interceptor...
+2019-11-12 16:55:11.362 DEBUG 76684 --- [http-nio-8912-exec-7] c.s.m.S.selectByExample_COUNT            : ==>  Preparing: SELECT count(0) FROM std_account WHERE (graduation_time < ?) AND (graduated = ?) 
+2019-11-12 16:55:11.363 DEBUG 76684 --- [http-nio-8912-exec-7] c.s.m.S.selectByExample_COUNT            : ==> Parameters: 2019-09-30 00:00:00.0(Timestamp), 0(Byte)
+2019-11-12 16:55:11.365 DEBUG 76684 --- [http-nio-8912-exec-7] c.s.m.S.selectByExample_COUNT            : <==      Total: 1
+2019-11-12 16:55:11.366 DEBUG 76684 --- [http-nio-8912-exec-7] c.s.m.StdAccountMapper.selectByExample   : ==>  Preparing: SELECT id , name , std_no , graduation_time , create_time , update_time , graduated FROM std_account WHERE ( graduation_time < ? ) and ( graduated = ? ) LIMIT ? 
+2019-11-12 16:55:11.368 DEBUG 76684 --- [http-nio-8912-exec-7] c.s.m.StdAccountMapper.selectByExample   : ==> Parameters: 2019-09-30 00:00:00.0(Timestamp), 0(Byte), 20(Integer)
+2019-11-12 16:55:11.371 DEBUG 76684 --- [http-nio-8912-exec-7] c.s.m.StdAccountMapper.selectByExample   : <==      Total: 1
+2019-11-12 17:00:28.211  INFO 76684 --- [Thread-25] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'asyncServiceExecutor'
+2019-11-12 17:00:28.221  INFO 76684 --- [Thread-25] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2019-11-12 17:00:37.125  INFO 77580 --- [restartedMain] c.s.StdworkManagementApplication         : Starting StdworkManagementApplication on LKgod with PID 77580 (E:\idea_workspace\stdwork_management\target\classes started by lzhangmoony in E:\idea_workspace\stdwork_management)
+2019-11-12 17:00:37.129  INFO 77580 --- [restartedMain] c.s.StdworkManagementApplication         : The following profiles are active: prod
+2019-11-12 17:00:37.231  INFO 77580 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-11-12 17:00:37.231  INFO 77580 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-11-12 17:00:38.746  WARN 77580 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.stdwork_management]' package. Please check your configuration.
+2019-11-12 17:00:39.195  INFO 77580 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$300e1a9] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-11-12 17:00:39.637  INFO 77580 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8912 (http)
+2019-11-12 17:00:39.667  INFO 77580 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-11-12 17:00:39.667  INFO 77580 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.26]
+2019-11-12 17:00:39.677  INFO 77580 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : An older version [1.2.21] of the APR based Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.23]
+2019-11-12 17:00:39.678  INFO 77580 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : Loaded APR based Apache Tomcat Native library [1.2.21] using APR version [1.6.5].
+2019-11-12 17:00:39.679  INFO 77580 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2019-11-12 17:00:39.680  INFO 77580 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2019-11-12 17:00:39.684  INFO 77580 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1a  20 Nov 2018]
+2019-11-12 17:00:39.815  INFO 77580 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-11-12 17:00:39.816  INFO 77580 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2585 ms
+2019-11-12 17:00:39.980  INFO 77580 --- [restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2019-11-12 17:00:41.230  INFO 77580 --- [restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2019-11-12 17:00:41.787  INFO 77580 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService
+2019-11-12 17:00:41.789  INFO 77580 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'asyncServiceExecutor'
+2019-11-12 17:00:42.580  INFO 77580 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-11-12 17:00:42.899  INFO 77580 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2019-11-12 17:00:43.252  INFO 77580 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2019-11-12 17:00:43.278  INFO 77580 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2019-11-12 17:00:43.345  INFO 77580 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2019-11-12 17:00:43.927  INFO 77580 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: changePasswordUsingPOST_1
+2019-11-12 17:00:43.932  INFO 77580 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: downloadUsingGET_1
+2019-11-12 17:00:43.936  INFO 77580 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: downloadPathUsingGET_1
+2019-11-12 17:00:43.945  INFO 77580 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: fileListUsingGET_1
+2019-11-12 17:00:43.958  INFO 77580 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: loginUsingPOST_1
+2019-11-12 17:00:44.043  INFO 77580 --- [restartedMain] c.s.listener.ApplicationRunListener      : 查看初始化数据是否存在
+2019-11-12 17:00:44.129 DEBUG 77580 --- [restartedMain] c.s.mapper.LocalFileSysMapper.select     : ==>  Preparing: SELECT id,pid,filename,level,path,parent_path,type,create_time,update_time FROM local_file_sys WHERE id = ? AND path = ? 
+2019-11-12 17:00:44.359 DEBUG 77580 --- [restartedMain] c.s.mapper.LocalFileSysMapper.select     : ==> Parameters: 1(String), E:/z04/(String)
+2019-11-12 17:00:44.464 DEBUG 77580 --- [restartedMain] c.s.mapper.LocalFileSysMapper.select     : <==      Total: 1
+2019-11-12 17:00:44.478  INFO 77580 --- [restartedMain] c.s.listener.ApplicationRunListener      : 存在不需要初始化1 -> LocalFileSysPO(id=1, pid=null, filename=null, level=null, path=E:/z04/, parentPath=null, type=null, createTime=null, updateTime=null)
+2019-11-12 17:00:44.686  INFO 77580 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8912 (http) with context path ''
+2019-11-12 17:00:44.694  INFO 77580 --- [restartedMain] c.s.StdworkManagementApplication         : Started StdworkManagementApplication in 8.887 seconds (JVM running for 11.118)
+2019-11-12 17:00:56.624  INFO 77580 --- [http-nio-8912-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-11-12 17:00:56.624  INFO 77580 --- [http-nio-8912-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-11-12 17:00:56.637  INFO 77580 --- [http-nio-8912-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 13 ms
+2019-11-12 17:00:56.690  INFO 77580 --- [http-nio-8912-exec-1] c.s.interceptor.AuthorizeInterceptor     : into authorize interceptor...
+2019-11-12 17:00:56.886 DEBUG 77580 --- [http-nio-8912-exec-1] c.s.m.S.selectByExample_COUNT            : ==>  Preparing: SELECT count(0) FROM std_account WHERE (graduation_time < ?) AND (graduated = ?) 
+2019-11-12 17:00:56.897 DEBUG 77580 --- [http-nio-8912-exec-1] c.s.m.S.selectByExample_COUNT            : ==> Parameters: 2019-09-30 00:00:00.0(Timestamp), 0(Byte)
+2019-11-12 17:00:56.900 DEBUG 77580 --- [http-nio-8912-exec-1] c.s.m.S.selectByExample_COUNT            : <==      Total: 1
+2019-11-12 17:00:56.905 DEBUG 77580 --- [http-nio-8912-exec-1] c.s.m.StdAccountMapper.selectByExample   : ==>  Preparing: SELECT id , name , std_no , graduation_time , create_time , update_time , graduated FROM std_account WHERE ( graduation_time < ? ) and ( graduated = ? ) LIMIT ? 
+2019-11-12 17:00:56.910 DEBUG 77580 --- [http-nio-8912-exec-1] c.s.m.StdAccountMapper.selectByExample   : ==> Parameters: 2019-09-30 00:00:00.0(Timestamp), 0(Byte), 20(Integer)
+2019-11-12 17:00:56.915 DEBUG 77580 --- [http-nio-8912-exec-1] c.s.m.StdAccountMapper.selectByExample   : <==      Total: 1
+2019-11-12 17:01:07.376  INFO 77580 --- [http-nio-8912-exec-3] c.s.interceptor.AuthorizeInterceptor     : into authorize interceptor...
+2019-11-12 17:01:07.395  WARN 77580 --- [http-nio-8912-exec-3] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.validation.BindException: org.springframework.validation.BeanPropertyBindingResult: 1 errors
+Field error in object 'stdUserBackendManageVO' on field 'graduationTime': rejected value [2019-09-30]; codes [typeMismatch.stdUserBackendManageVO.graduationTime,typeMismatch.graduationTime,typeMismatch.java.util.Date,typeMismatch]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [stdUserBackendManageVO.graduationTime,graduationTime]; arguments []; default message [graduationTime]]; default message [Failed to convert property value of type 'java.lang.String' to required type 'java.util.Date' for property 'graduationTime'; nested exception is org.springframework.core.convert.ConversionFailedException: Failed to convert from type [java.lang.String] to type [@io.swagger.annotations.ApiModelProperty java.util.Date] for value '2019-09-30'; nested exception is java.lang.IllegalArgumentException]]
+2019-11-12 17:01:35.982  INFO 77580 --- [Thread-24] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'asyncServiceExecutor'
+2019-11-12 17:01:35.991  INFO 77580 --- [Thread-24] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2019-11-12 17:01:41.502  INFO 77144 --- [restartedMain] c.s.StdworkManagementApplication         : Starting StdworkManagementApplication on LKgod with PID 77144 (E:\idea_workspace\stdwork_management\target\classes started by lzhangmoony in E:\idea_workspace\stdwork_management)
+2019-11-12 17:01:41.506  INFO 77144 --- [restartedMain] c.s.StdworkManagementApplication         : The following profiles are active: prod
+2019-11-12 17:01:41.665  INFO 77144 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-11-12 17:01:41.666  INFO 77144 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-11-12 17:01:43.714  WARN 77144 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.stdwork_management]' package. Please check your configuration.
+2019-11-12 17:01:44.206  INFO 77144 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$350aaab8] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-11-12 17:01:44.664  INFO 77144 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8912 (http)
+2019-11-12 17:01:44.691  INFO 77144 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-11-12 17:01:44.691  INFO 77144 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.26]
+2019-11-12 17:01:44.698  INFO 77144 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : An older version [1.2.21] of the APR based Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.23]
+2019-11-12 17:01:44.699  INFO 77144 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : Loaded APR based Apache Tomcat Native library [1.2.21] using APR version [1.6.5].
+2019-11-12 17:01:44.699  INFO 77144 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2019-11-12 17:01:44.699  INFO 77144 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2019-11-12 17:01:44.703  INFO 77144 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1a  20 Nov 2018]
+2019-11-12 17:01:44.810  INFO 77144 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-11-12 17:01:44.810  INFO 77144 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3144 ms
+2019-11-12 17:01:44.982  INFO 77144 --- [restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2019-11-12 17:01:46.313  INFO 77144 --- [restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2019-11-12 17:01:46.911  INFO 77144 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService
+2019-11-12 17:01:46.913  INFO 77144 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'asyncServiceExecutor'
+2019-11-12 17:01:47.362  INFO 77144 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-11-12 17:01:47.638  INFO 77144 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2019-11-12 17:01:47.972  INFO 77144 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2019-11-12 17:01:47.994  INFO 77144 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2019-11-12 17:01:48.037  INFO 77144 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2019-11-12 17:01:48.250  INFO 77144 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: changePasswordUsingPOST_1
+2019-11-12 17:01:48.254  INFO 77144 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: downloadUsingGET_1
+2019-11-12 17:01:48.257  INFO 77144 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: downloadPathUsingGET_1
+2019-11-12 17:01:48.264  INFO 77144 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: fileListUsingGET_1
+2019-11-12 17:01:48.274  INFO 77144 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: loginUsingPOST_1
+2019-11-12 17:01:48.331  INFO 77144 --- [restartedMain] c.s.listener.ApplicationRunListener      : 查看初始化数据是否存在
+2019-11-12 17:01:48.389 DEBUG 77144 --- [restartedMain] c.s.mapper.LocalFileSysMapper.select     : ==>  Preparing: SELECT id,pid,filename,level,path,parent_path,type,create_time,update_time FROM local_file_sys WHERE id = ? AND path = ? 
+2019-11-12 17:01:48.561 DEBUG 77144 --- [restartedMain] c.s.mapper.LocalFileSysMapper.select     : ==> Parameters: 1(String), E:/z04/(String)
+2019-11-12 17:01:48.598 DEBUG 77144 --- [restartedMain] c.s.mapper.LocalFileSysMapper.select     : <==      Total: 1
+2019-11-12 17:01:48.602  INFO 77144 --- [restartedMain] c.s.listener.ApplicationRunListener      : 存在不需要初始化1 -> LocalFileSysPO(id=1, pid=null, filename=null, level=null, path=E:/z04/, parentPath=null, type=null, createTime=null, updateTime=null)
+2019-11-12 17:01:48.646  INFO 77144 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8912 (http) with context path ''
+2019-11-12 17:01:48.651  INFO 77144 --- [restartedMain] c.s.StdworkManagementApplication         : Started StdworkManagementApplication in 8.411 seconds (JVM running for 10.592)
+2019-11-12 17:01:50.661  INFO 77144 --- [http-nio-8912-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-11-12 17:01:50.662  INFO 77144 --- [http-nio-8912-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-11-12 17:01:50.677  INFO 77144 --- [http-nio-8912-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 15 ms
+2019-11-12 17:01:50.732  INFO 77144 --- [http-nio-8912-exec-1] c.s.interceptor.AuthorizeInterceptor     : into authorize interceptor...
+2019-11-12 17:01:51.011  WARN 77144 --- [http-nio-8912-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.validation.BindException: org.springframework.validation.BeanPropertyBindingResult: 1 errors
+Field error in object 'stdUserBackendManageVO' on field 'graduationTime': rejected value [2019-09-30]; codes [typeMismatch.stdUserBackendManageVO.graduationTime,typeMismatch.graduationTime,typeMismatch.java.util.Date,typeMismatch]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [stdUserBackendManageVO.graduationTime,graduationTime]; arguments []; default message [graduationTime]]; default message [Failed to convert property value of type 'java.lang.String' to required type 'java.util.Date' for property 'graduationTime'; nested exception is org.springframework.core.convert.ConversionFailedException: Failed to convert from type [java.lang.String] to type [@io.swagger.annotations.ApiModelProperty java.util.Date] for value '2019-09-30'; nested exception is java.lang.IllegalArgumentException]]
+2019-11-12 17:04:58.635  INFO 77144 --- [Thread-23] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'asyncServiceExecutor'
+2019-11-12 17:04:58.648  INFO 77144 --- [Thread-23] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2019-11-12 17:05:11.770  INFO 77932 --- [restartedMain] c.s.StdworkManagementApplication         : Starting StdworkManagementApplication on LKgod with PID 77932 (E:\idea_workspace\stdwork_management\target\classes started by lzhangmoony in E:\idea_workspace\stdwork_management)
+2019-11-12 17:05:11.776  INFO 77932 --- [restartedMain] c.s.StdworkManagementApplication         : The following profiles are active: prod
+2019-11-12 17:05:11.869  INFO 77932 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-11-12 17:05:11.869  INFO 77932 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-11-12 17:05:13.489  WARN 77932 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.stdwork_management]' package. Please check your configuration.
+2019-11-12 17:05:13.992  INFO 77932 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$f57fedc] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-11-12 17:05:14.429  INFO 77932 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8912 (http)
+2019-11-12 17:05:14.463  INFO 77932 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-11-12 17:05:14.463  INFO 77932 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.26]
+2019-11-12 17:05:14.470  INFO 77932 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : An older version [1.2.21] of the APR based Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.23]
+2019-11-12 17:05:14.471  INFO 77932 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : Loaded APR based Apache Tomcat Native library [1.2.21] using APR version [1.6.5].
+2019-11-12 17:05:14.471  INFO 77932 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2019-11-12 17:05:14.471  INFO 77932 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2019-11-12 17:05:14.476  INFO 77932 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1a  20 Nov 2018]
+2019-11-12 17:05:14.618  INFO 77932 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-11-12 17:05:14.618  INFO 77932 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2749 ms
+2019-11-12 17:05:15.205  INFO 77932 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2019-11-12 17:05:15.289  INFO 77932 --- [restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2019-11-12 17:05:16.531  INFO 77932 --- [restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2019-11-12 17:05:17.190  INFO 77932 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService
+2019-11-12 17:05:17.193  INFO 77932 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'asyncServiceExecutor'
+2019-11-12 17:05:17.524  INFO 77932 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-11-12 17:05:17.810  INFO 77932 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2019-11-12 17:05:17.837  INFO 77932 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2019-11-12 17:05:17.912  INFO 77932 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2019-11-12 17:05:18.139  INFO 77932 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: changePasswordUsingPOST_1
+2019-11-12 17:05:18.144  INFO 77932 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: downloadUsingGET_1
+2019-11-12 17:05:18.146  INFO 77932 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: downloadPathUsingGET_1
+2019-11-12 17:05:18.150  INFO 77932 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: fileListUsingGET_1
+2019-11-12 17:05:18.161  INFO 77932 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: loginUsingPOST_1
+2019-11-12 17:05:18.215  INFO 77932 --- [restartedMain] c.s.listener.ApplicationRunListener      : 查看初始化数据是否存在
+2019-11-12 17:05:18.266 DEBUG 77932 --- [restartedMain] c.s.mapper.LocalFileSysMapper.select     : ==>  Preparing: SELECT id,pid,filename,level,path,parent_path,type,create_time,update_time FROM local_file_sys WHERE id = ? AND path = ? 
+2019-11-12 17:05:18.450 DEBUG 77932 --- [restartedMain] c.s.mapper.LocalFileSysMapper.select     : ==> Parameters: 1(String), E:/z04/(String)
+2019-11-12 17:05:18.484 DEBUG 77932 --- [restartedMain] c.s.mapper.LocalFileSysMapper.select     : <==      Total: 1
+2019-11-12 17:05:18.488  INFO 77932 --- [restartedMain] c.s.listener.ApplicationRunListener      : 存在不需要初始化1 -> LocalFileSysPO(id=1, pid=null, filename=null, level=null, path=E:/z04/, parentPath=null, type=null, createTime=null, updateTime=null)
+2019-11-12 17:05:18.527  INFO 77932 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8912 (http) with context path ''
+2019-11-12 17:05:18.531  INFO 77932 --- [restartedMain] c.s.StdworkManagementApplication         : Started StdworkManagementApplication in 8.508 seconds (JVM running for 10.933)
+2019-11-12 17:05:21.133  INFO 77932 --- [http-nio-8912-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-11-12 17:05:21.133  INFO 77932 --- [http-nio-8912-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-11-12 17:05:21.194  INFO 77932 --- [http-nio-8912-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 61 ms
+2019-11-12 17:05:21.285  INFO 77932 --- [http-nio-8912-exec-1] c.s.interceptor.AuthorizeInterceptor     : into authorize interceptor...
+2019-11-12 17:05:21.525 DEBUG 77932 --- [http-nio-8912-exec-1] c.s.m.S.selectByExample_COUNT            : ==>  Preparing: SELECT count(0) FROM std_account WHERE (graduation_time < ?) AND (graduated = ?) 
+2019-11-12 17:05:21.541 DEBUG 77932 --- [http-nio-8912-exec-1] c.s.m.S.selectByExample_COUNT            : ==> Parameters: 2019-09-30 00:00:00.0(Timestamp), 0(Byte)
+2019-11-12 17:05:21.544 DEBUG 77932 --- [http-nio-8912-exec-1] c.s.m.S.selectByExample_COUNT            : <==      Total: 1
+2019-11-12 17:05:21.549 DEBUG 77932 --- [http-nio-8912-exec-1] c.s.m.StdAccountMapper.selectByExample   : ==>  Preparing: SELECT id , name , std_no , graduation_time , create_time , update_time , graduated FROM std_account WHERE ( graduation_time < ? ) and ( graduated = ? ) LIMIT ? 
+2019-11-12 17:05:21.553 DEBUG 77932 --- [http-nio-8912-exec-1] c.s.m.StdAccountMapper.selectByExample   : ==> Parameters: 2019-09-30 00:00:00.0(Timestamp), 0(Byte), 20(Integer)
+2019-11-12 17:05:21.557 DEBUG 77932 --- [http-nio-8912-exec-1] c.s.m.StdAccountMapper.selectByExample   : <==      Total: 1
+2019-11-12 17:05:24.212  INFO 77932 --- [http-nio-8912-exec-2] c.s.interceptor.AuthorizeInterceptor     : into authorize interceptor...
+2019-11-12 17:05:24.240 DEBUG 77932 --- [http-nio-8912-exec-2] c.s.m.S.selectByExample_COUNT            : ==>  Preparing: SELECT count(0) FROM std_account WHERE (graduation_time < ?) AND (graduated = ?) 
+2019-11-12 17:05:24.242 DEBUG 77932 --- [http-nio-8912-exec-2] c.s.m.S.selectByExample_COUNT            : ==> Parameters: 2019-09-30 00:00:00.0(Timestamp), 0(Byte)
+2019-11-12 17:05:24.244 DEBUG 77932 --- [http-nio-8912-exec-2] c.s.m.S.selectByExample_COUNT            : <==      Total: 1
+2019-11-12 17:05:24.245 DEBUG 77932 --- [http-nio-8912-exec-2] c.s.m.StdAccountMapper.selectByExample   : ==>  Preparing: SELECT id , name , std_no , graduation_time , create_time , update_time , graduated FROM std_account WHERE ( graduation_time < ? ) and ( graduated = ? ) LIMIT ? 
+2019-11-12 17:05:24.247 DEBUG 77932 --- [http-nio-8912-exec-2] c.s.m.StdAccountMapper.selectByExample   : ==> Parameters: 2019-09-30 00:00:00.0(Timestamp), 0(Byte), 20(Integer)
+2019-11-12 17:05:24.249 DEBUG 77932 --- [http-nio-8912-exec-2] c.s.m.StdAccountMapper.selectByExample   : <==      Total: 1
+2019-11-12 17:05:33.036  INFO 77932 --- [http-nio-8912-exec-3] c.s.interceptor.AuthorizeInterceptor     : into authorize interceptor...
+2019-11-12 17:05:33.051 DEBUG 77932 --- [http-nio-8912-exec-3] c.s.m.S.selectByExample_COUNT            : ==>  Preparing: SELECT count(0) FROM std_account WHERE (graduation_time < ?) AND (graduated = ?) 
+2019-11-12 17:05:33.052 DEBUG 77932 --- [http-nio-8912-exec-3] c.s.m.S.selectByExample_COUNT            : ==> Parameters: 2019-09-30 00:00:00.0(Timestamp), 0(Byte)
+2019-11-12 17:05:33.054 DEBUG 77932 --- [http-nio-8912-exec-3] c.s.m.S.selectByExample_COUNT            : <==      Total: 1
+2019-11-12 17:05:33.055 DEBUG 77932 --- [http-nio-8912-exec-3] c.s.m.StdAccountMapper.selectByExample   : ==>  Preparing: SELECT id , name , std_no , graduation_time , create_time , update_time , graduated FROM std_account WHERE ( graduation_time < ? ) and ( graduated = ? ) LIMIT ? 
+2019-11-12 17:05:33.056 DEBUG 77932 --- [http-nio-8912-exec-3] c.s.m.StdAccountMapper.selectByExample   : ==> Parameters: 2019-09-30 00:00:00.0(Timestamp), 0(Byte), 20(Integer)
+2019-11-12 17:05:33.061 DEBUG 77932 --- [http-nio-8912-exec-3] c.s.m.StdAccountMapper.selectByExample   : <==      Total: 1
+2019-11-12 17:09:02.196  INFO 77932 --- [Thread-23] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'asyncServiceExecutor'
+2019-11-12 17:09:02.213  INFO 77932 --- [Thread-23] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2019-11-12 17:09:13.524  INFO 78612 --- [restartedMain] c.s.StdworkManagementApplication         : Starting StdworkManagementApplication on LKgod with PID 78612 (E:\idea_workspace\stdwork_management\target\classes started by lzhangmoony in E:\idea_workspace\stdwork_management)
+2019-11-12 17:09:13.528  INFO 78612 --- [restartedMain] c.s.StdworkManagementApplication         : The following profiles are active: prod
+2019-11-12 17:09:28.662  INFO 75920 --- [restartedMain] c.s.StdworkManagementApplication         : Starting StdworkManagementApplication on LKgod with PID 75920 (E:\idea_workspace\stdwork_management\target\classes started by lzhangmoony in E:\idea_workspace\stdwork_management)
+2019-11-12 17:09:28.668  INFO 75920 --- [restartedMain] c.s.StdworkManagementApplication         : The following profiles are active: prod
+2019-11-12 17:09:28.784  INFO 75920 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-11-12 17:09:28.785  INFO 75920 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-11-12 17:09:30.276  WARN 75920 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.stdwork_management]' package. Please check your configuration.
+2019-11-12 17:09:30.761  INFO 75920 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$5e78c0b3] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-11-12 17:09:31.236  INFO 75920 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8912 (http)
+2019-11-12 17:09:31.264  INFO 75920 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-11-12 17:09:31.264  INFO 75920 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.26]
+2019-11-12 17:09:31.274  INFO 75920 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : An older version [1.2.21] of the APR based Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.23]
+2019-11-12 17:09:31.274  INFO 75920 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : Loaded APR based Apache Tomcat Native library [1.2.21] using APR version [1.6.5].
+2019-11-12 17:09:31.274  INFO 75920 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2019-11-12 17:09:31.275  INFO 75920 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2019-11-12 17:09:31.280  INFO 75920 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1a  20 Nov 2018]
+2019-11-12 17:09:31.399  INFO 75920 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-11-12 17:09:31.400  INFO 75920 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2614 ms
+2019-11-12 17:09:32.013  INFO 75920 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2019-11-12 17:09:32.093  INFO 75920 --- [restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2019-11-12 17:09:33.244  INFO 75920 --- [restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2019-11-12 17:09:33.801  INFO 75920 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService
+2019-11-12 17:09:33.803  INFO 75920 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'asyncServiceExecutor'
+2019-11-12 17:09:34.094  INFO 75920 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-11-12 17:09:34.385  INFO 75920 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2019-11-12 17:09:34.412  INFO 75920 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2019-11-12 17:09:34.466  INFO 75920 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2019-11-12 17:09:34.684  INFO 75920 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: changePasswordUsingPOST_1
+2019-11-12 17:09:34.687  INFO 75920 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: downloadUsingGET_1
+2019-11-12 17:09:34.689  INFO 75920 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: downloadPathUsingGET_1
+2019-11-12 17:09:34.698  INFO 75920 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: fileListUsingGET_1
+2019-11-12 17:09:34.707  INFO 75920 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: loginUsingPOST_1
+2019-11-12 17:09:34.759  INFO 75920 --- [restartedMain] c.s.listener.ApplicationRunListener      : 查看初始化数据是否存在
+2019-11-12 17:09:34.830 DEBUG 75920 --- [restartedMain] c.s.mapper.LocalFileSysMapper.select     : ==>  Preparing: SELECT id,pid,filename,level,path,parent_path,type,create_time,update_time FROM local_file_sys WHERE id = ? AND path = ? 
+2019-11-12 17:09:34.990 DEBUG 75920 --- [restartedMain] c.s.mapper.LocalFileSysMapper.select     : ==> Parameters: 1(String), E:/z04/(String)
+2019-11-12 17:09:35.022 DEBUG 75920 --- [restartedMain] c.s.mapper.LocalFileSysMapper.select     : <==      Total: 1
+2019-11-12 17:09:35.025  INFO 75920 --- [restartedMain] c.s.listener.ApplicationRunListener      : 存在不需要初始化1 -> LocalFileSysPO(id=1, pid=null, filename=null, level=null, path=E:/z04/, parentPath=null, type=null, createTime=null, updateTime=null)
+2019-11-12 17:09:35.065  INFO 75920 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8912 (http) with context path ''
+2019-11-12 17:09:35.069  INFO 75920 --- [restartedMain] c.s.StdworkManagementApplication         : Started StdworkManagementApplication in 7.574 seconds (JVM running for 9.595)
+2019-11-12 17:09:42.931  INFO 75920 --- [http-nio-8912-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-11-12 17:09:42.932  INFO 75920 --- [http-nio-8912-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-11-12 17:09:42.945  INFO 75920 --- [http-nio-8912-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 13 ms
+2019-11-12 17:09:42.977  INFO 75920 --- [http-nio-8912-exec-1] c.s.interceptor.AuthorizeInterceptor     : into authorize interceptor...
+2019-11-12 17:09:43.127 DEBUG 75920 --- [http-nio-8912-exec-1] c.s.m.S.selectByExample_COUNT            : ==>  Preparing: SELECT count(0) FROM std_account WHERE (graduation_time < ?) AND (graduated = ?) 
+2019-11-12 17:09:43.142 DEBUG 75920 --- [http-nio-8912-exec-1] c.s.m.S.selectByExample_COUNT            : ==> Parameters: 2019-09-30 00:00:00.0(Timestamp), 0(Byte)
+2019-11-12 17:09:43.145 DEBUG 75920 --- [http-nio-8912-exec-1] c.s.m.S.selectByExample_COUNT            : <==      Total: 1
+2019-11-12 17:09:43.151 DEBUG 75920 --- [http-nio-8912-exec-1] c.s.m.StdAccountMapper.selectByExample   : ==>  Preparing: SELECT id , name , std_no , graduation_time , create_time , update_time , graduated FROM std_account WHERE ( graduation_time < ? ) and ( graduated = ? ) LIMIT ? 
+2019-11-12 17:09:43.156 DEBUG 75920 --- [http-nio-8912-exec-1] c.s.m.StdAccountMapper.selectByExample   : ==> Parameters: 2019-09-30 00:00:00.0(Timestamp), 0(Byte), 20(Integer)
+2019-11-12 17:09:43.159 DEBUG 75920 --- [http-nio-8912-exec-1] c.s.m.StdAccountMapper.selectByExample   : <==      Total: 1
+2019-11-12 17:09:49.447  INFO 75920 --- [http-nio-8912-exec-2] c.s.interceptor.AuthorizeInterceptor     : into authorize interceptor...
+2019-11-12 17:09:49.464 DEBUG 75920 --- [http-nio-8912-exec-2] c.s.m.S.selectByExample_COUNT            : ==>  Preparing: SELECT count(0) FROM std_account WHERE (graduated = ?) 
+2019-11-12 17:09:49.465 DEBUG 75920 --- [http-nio-8912-exec-2] c.s.m.S.selectByExample_COUNT            : ==> Parameters: 0(Byte)
+2019-11-12 17:09:49.467 DEBUG 75920 --- [http-nio-8912-exec-2] c.s.m.S.selectByExample_COUNT            : <==      Total: 1
+2019-11-12 17:09:49.468 DEBUG 75920 --- [http-nio-8912-exec-2] c.s.m.StdAccountMapper.selectByExample   : ==>  Preparing: SELECT id , name , std_no , graduation_time , create_time , update_time , graduated FROM std_account WHERE ( graduated = ? ) LIMIT ? 
+2019-11-12 17:09:49.470 DEBUG 75920 --- [http-nio-8912-exec-2] c.s.m.StdAccountMapper.selectByExample   : ==> Parameters: 0(Byte), 20(Integer)
+2019-11-12 17:09:49.472 DEBUG 75920 --- [http-nio-8912-exec-2] c.s.m.StdAccountMapper.selectByExample   : <==      Total: 2
+2019-11-12 17:10:10.436  INFO 75920 --- [http-nio-8912-exec-3] c.s.interceptor.AuthorizeInterceptor     : into authorize interceptor...
+2019-11-12 17:10:10.448 DEBUG 75920 --- [http-nio-8912-exec-3] c.s.m.S.selectByExample_COUNT            : ==>  Preparing: SELECT count(0) FROM std_account WHERE (graduated = ?) 
+2019-11-12 17:10:10.450 DEBUG 75920 --- [http-nio-8912-exec-3] c.s.m.S.selectByExample_COUNT            : ==> Parameters: 0(Byte)
+2019-11-12 17:10:10.452 DEBUG 75920 --- [http-nio-8912-exec-3] c.s.m.S.selectByExample_COUNT            : <==      Total: 1
+2019-11-12 17:10:10.453 DEBUG 75920 --- [http-nio-8912-exec-3] c.s.m.StdAccountMapper.selectByExample   : ==>  Preparing: SELECT id , name , std_no , graduation_time , create_time , update_time , graduated FROM std_account WHERE ( graduated = ? ) LIMIT ? 
+2019-11-12 17:10:10.454 DEBUG 75920 --- [http-nio-8912-exec-3] c.s.m.StdAccountMapper.selectByExample   : ==> Parameters: 0(Byte), 20(Integer)
+2019-11-12 17:10:10.458 DEBUG 75920 --- [http-nio-8912-exec-3] c.s.m.StdAccountMapper.selectByExample   : <==      Total: 2
+2019-11-12 17:10:18.602  INFO 75920 --- [http-nio-8912-exec-4] c.s.interceptor.AuthorizeInterceptor     : into authorize interceptor...
+2019-11-12 17:10:18.613 DEBUG 75920 --- [http-nio-8912-exec-4] c.s.m.S.selectByExample_COUNT            : ==>  Preparing: SELECT count(0) FROM std_account WHERE (graduation_time < ?) AND (graduated = ?) 
+2019-11-12 17:10:18.614 DEBUG 75920 --- [http-nio-8912-exec-4] c.s.m.S.selectByExample_COUNT            : ==> Parameters: 2019-09-30 00:00:00.0(Timestamp), 0(Byte)
+2019-11-12 17:10:18.616 DEBUG 75920 --- [http-nio-8912-exec-4] c.s.m.S.selectByExample_COUNT            : <==      Total: 1
+2019-11-12 17:10:18.617 DEBUG 75920 --- [http-nio-8912-exec-4] c.s.m.StdAccountMapper.selectByExample   : ==>  Preparing: SELECT id , name , std_no , graduation_time , create_time , update_time , graduated FROM std_account WHERE ( graduation_time < ? ) and ( graduated = ? ) LIMIT ? 
+2019-11-12 17:10:18.618 DEBUG 75920 --- [http-nio-8912-exec-4] c.s.m.StdAccountMapper.selectByExample   : ==> Parameters: 2019-09-30 00:00:00.0(Timestamp), 0(Byte), 20(Integer)
+2019-11-12 17:10:18.621 DEBUG 75920 --- [http-nio-8912-exec-4] c.s.m.StdAccountMapper.selectByExample   : <==      Total: 1
+2019-11-12 17:10:32.592  INFO 75920 --- [http-nio-8912-exec-5] c.s.interceptor.AuthorizeInterceptor     : into authorize interceptor...
+2019-11-12 17:10:32.606 DEBUG 75920 --- [http-nio-8912-exec-5] c.s.m.S.selectByExample_COUNT            : ==>  Preparing: SELECT count(0) FROM std_account WHERE (graduation_time < ?) AND (graduated = ? AND std_no = ?) 
+2019-11-12 17:10:32.608 DEBUG 75920 --- [http-nio-8912-exec-5] c.s.m.S.selectByExample_COUNT            : ==> Parameters: 2019-09-30 00:00:00.0(Timestamp), 0(Byte), 234324(String)
+2019-11-12 17:10:32.611 DEBUG 75920 --- [http-nio-8912-exec-5] c.s.m.S.selectByExample_COUNT            : <==      Total: 1
+2019-11-12 17:10:32.612 DEBUG 75920 --- [http-nio-8912-exec-5] c.s.m.StdAccountMapper.selectByExample   : ==>  Preparing: SELECT id , name , std_no , graduation_time , create_time , update_time , graduated FROM std_account WHERE ( graduation_time < ? ) and ( graduated = ? and std_no = ? ) LIMIT ? 
+2019-11-12 17:10:32.616 DEBUG 75920 --- [http-nio-8912-exec-5] c.s.m.StdAccountMapper.selectByExample   : ==> Parameters: 2019-09-30 00:00:00.0(Timestamp), 0(Byte), 234324(String), 20(Integer)
+2019-11-12 17:10:32.620 DEBUG 75920 --- [http-nio-8912-exec-5] c.s.m.StdAccountMapper.selectByExample   : <==      Total: 1
