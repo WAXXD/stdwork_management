@@ -30,6 +30,7 @@ public class AppServiceImpl implements AppService {
     public List<StdAccountPO> login(StdUserVO stdUserVO) {
         StdAccountPO stdAccountPO = new StdAccountPO();
         BeanUtils.copyProperties(stdUserVO, stdAccountPO);
+//        stdAccountPO.setGraduated((byte) 0);
         return stdAccountMapper.select(stdAccountPO);
     }
 

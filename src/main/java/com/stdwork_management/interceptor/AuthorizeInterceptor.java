@@ -31,9 +31,11 @@ public class AuthorizeInterceptor implements HandlerInterceptor {
 
                 Cookie[] cookies = request.getCookies();
                 String tokenFromCookie = "";
-                for(Cookie cookie : cookies){
-                    if (StringUtils.equalsIgnoreCase(cookie.getName(), "token")) {
-                        tokenFromCookie = cookie.getValue();
+                if(cookies != null){
+                    for(Cookie cookie : cookies){
+                        if (StringUtils.equalsIgnoreCase(cookie.getName(), "token")) {
+                            tokenFromCookie = cookie.getValue();
+                        }
                     }
                 }
                 String sessionToken;

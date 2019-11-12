@@ -205,6 +205,8 @@ public class BackEndServiceImpl implements BackEndService {
             example.and().andLike("filename", "%" + searchKey + "%");
             localFileSysPOS = localFileSysMapper.selectByExample(example);
             localFileSysPOPageInfo = new PageInfo<>(localFileSysPOS);
+//            localFileSysPOS = localFileSysMapper.fullIndexSearch(searchKey);
+//            localFileSysPOPageInfo = new PageInfo<>(localFileSysPOS);
         } else if(StringUtils.isBlank(path)){
             localFileSysPO.setLevel((byte) 1);
             localFileSysPOS = localFileSysMapper.select(localFileSysPO);
@@ -263,9 +265,14 @@ public class BackEndServiceImpl implements BackEndService {
     @Override
     public List<StdAccountPO> stdList(StdUserBackendManageVO stdUserBackendManageVO) {
         Example example = new Example(StdAccountPO.class);
+        if(stdUserBackendManageVO.getGraduationTime() != null){
+            example.and().andLessThan("graduationTime", stdUserBackendManageVO.getGraduationTime());
+            stdUserBackendManageVO.setGraduationTime(null);
+        }
         example.and().andEqualTo(stdUserBackendManageVO);
         example.selectProperties("id", "name","stdNo", "graduationTime","createTime", "updateTime","graduated");
         List<StdAccountPO> stdAccountPOS;
+
         stdAccountPOS = stdAccountMapper.selectByExample(example);
         return stdAccountPOS;
     }

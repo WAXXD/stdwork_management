@@ -6,6 +6,8 @@ import tk.mybatis.mapper.additional.insert.InsertListMapper;
 import tk.mybatis.mapper.common.ConditionMapper;
 import tk.mybatis.mapper.common.Mapper;
 
+import java.util.List;
+
 /**
  * description:
  *
@@ -16,5 +18,5 @@ import tk.mybatis.mapper.common.Mapper;
 @Repository
 public interface LocalFileSysMapper extends ConditionMapper<LocalFileSysPO>,InsertListMapper<LocalFileSysPO>, Mapper<LocalFileSysPO> {
 
-
+    List<LocalFileSysPO> fullIndexSearch(String searchKey);
 }
