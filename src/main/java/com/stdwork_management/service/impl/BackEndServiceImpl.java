@@ -285,6 +285,14 @@ public class BackEndServiceImpl implements BackEndService {
             stdAccountPO.setPassword(MD5Util.getMD5(stdAccountPO.getPassword()));
         }
         stdAccountPO.setUpdateTime(new Date());
+        Example example = new Example(StdAccountPO.class);
+        example.and().andEqualTo("stdNo", stdAccountPO.getStdNo());
+        List<StdAccountPO> stdNo = stdAccountMapper.selectByExample(example);
+        if(stdNo != null && stdNo.size() > 0 ){
+            stdAccountPO.setId(stdNo.get(0).getId());
+        } else {
+            throw new UserDefinedException(9999, "修改学生不存在");
+        }
         if (stdAccountMapper.updateByPrimaryKeySelective(stdAccountPO) == 0) {
             new UserDefinedException(9999, "修改失败");
         }
