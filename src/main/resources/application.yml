@@ -57,3 +57,7 @@ spring:
 
 mybatis:
   mapper-locations: classpath*:mybatis/mapper/*.xml
+
+jasypt:
+  encryptor:
+    password: waxxd
