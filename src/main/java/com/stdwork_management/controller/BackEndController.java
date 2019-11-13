@@ -300,7 +300,12 @@ public class BackEndController {
         }
 
         File file = new File(workPath + "备份文件待下载区");
-        List<String> path = Arrays.stream(file.listFiles()).map(f -> "备份文件待下载区/" + f.getName()).collect(Collectors.toList());
+
+        List<LocalFileSysVO> path = Arrays.stream(file.listFiles()).map(f -> {
+            LocalFileSysVO localFileSysVO = new LocalFileSysVO();
+            localFileSysVO.setPath("备份文件待下载区/" + f.getName());
+            return localFileSysVO;
+        }).collect(Collectors.toList());
         return new Result().setData(path);
     }
 
