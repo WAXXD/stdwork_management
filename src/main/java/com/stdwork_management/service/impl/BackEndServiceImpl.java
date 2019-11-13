@@ -309,8 +309,8 @@ public class BackEndServiceImpl implements BackEndService {
     public void stdCreate(StdUserBackendManageAddVO stdUserBackendManageAddVO) {
         Example example = new Example(StdAccountPO.class);
         example.and().andEqualTo("stdNo", stdUserBackendManageAddVO.getStdNo());
-        StdAccountPO accountPO = stdAccountMapper.selectByPrimaryKey(example);
-        if (accountPO != null) {
+        List<StdAccountPO> stdAccountPOS = stdAccountMapper.selectByExample(example);
+        if ( stdAccountPOS.size() > 0) {
             throw new UserDefinedException(9999, "学号已存在");
         }
         StdAccountPO stdAccountPO = new StdAccountPO();
