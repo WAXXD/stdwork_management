@@ -48,7 +48,7 @@ spring:
     database: 0
     host: ENC(ueZeFPmPimyQmyiDGN0vrHY8IPh5LUSn)
     password: ENC(BEB68ywS5bccTVqdBhu6GFojGGzrunUz)
-    port: 6379
+    port: 6487
     max-active: 8
     max-wait: -1
     max-idle: 8
