@@ -269,10 +269,12 @@ public class BackEndServiceImpl implements BackEndService {
             example.and().andLessThan("graduationTime", stdUserBackendManageVO.getGraduationTime());
             stdUserBackendManageVO.setGraduationTime(null);
         }
-        example.and().andEqualTo(stdUserBackendManageVO);
+        StdAccountPO stdAccountPO = new StdAccountPO();
+        stdAccountPO.setGraduated(null);
+        BeanUtils.copyProperties(stdUserBackendManageVO, stdAccountPO);
+        example.and().andEqualTo(stdAccountPO);
         example.selectProperties("id", "name","stdNo", "graduationTime","createTime", "updateTime","graduated");
         List<StdAccountPO> stdAccountPOS;
-
         stdAccountPOS = stdAccountMapper.selectByExample(example);
         return stdAccountPOS;
     }
