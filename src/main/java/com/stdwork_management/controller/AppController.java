@@ -89,8 +89,8 @@ public class AppController {
         String token = MD5Util.getMD5(stdAccountPOS.get(0).toString() + new Date().getTime());
 //        request.getSession().setAttribute("token",token);
 //        request.getSession().setAttribute("user", stdAccountPOS.get(0));
-        redisUtils.set("token", token, 30 * 60, TimeUnit.SECONDS);
-        redisUtils.set("user", stdAccountPOS.get(0), 30 * 60, TimeUnit.SECONDS);
+        redisUtils.set(token, token, 30 * 60, TimeUnit.SECONDS);
+        redisUtils.set(token + "_user", stdAccountPOS.get(0), 30 * 60, TimeUnit.SECONDS);
         request.getSession().setMaxInactiveInterval(30 * 60);
         return new Result().setData(token);
     }

@@ -48,13 +48,13 @@ public class AuthorizeInterceptor implements HandlerInterceptor {
                 if(StringUtils.equals(methodAnnotation.accountType(), "std")){
 //                    cachedToken = (String)request.getSession().getAttribute("token");
 //                    user = request.getSession().getAttribute("user");
-                    cachedToken =  (String)redisUtils.get("token");
-                    user = redisUtils.get("user");
+                    cachedToken =  (String)redisUtils.get(token);
+                    user = redisUtils.get(token + "_user");
                 } else if (StringUtils.equals(methodAnnotation.accountType(), "admin")){
 //                    cachedToken = (String)request.getSession().getAttribute("admin_token");
 //                    user = request.getSession().getAttribute("admin_user");
-                    cachedToken =  (String) redisUtils.get("admin_token");
-                    user = redisUtils.get("admin_user");
+                    cachedToken =  (String) redisUtils.get(token);
+                    user = redisUtils.get(token + "_admin_user");
                 } else {
                     throw new UserDefinedException(9999, "您未登录到系统,请登录后访问");
                 }

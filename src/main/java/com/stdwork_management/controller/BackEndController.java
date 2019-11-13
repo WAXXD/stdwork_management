@@ -149,8 +149,8 @@ public class BackEndController {
 
         log.info("后台用户{}登录到系统", adminLoginVO.getAdminName());
         String token = MD5Util.getMD5(adminPOS.get(0).toString() + new Date().getTime());
-        redisUtils.set("admin_token", token, 30 * 60, TimeUnit.SECONDS);
-        redisUtils.set("admin_user", adminPOS.get(0), 30 * 60, TimeUnit.SECONDS);
+        redisUtils.set(token, token, 30 * 60, TimeUnit.SECONDS);
+        redisUtils.set( token + "_admin_user", adminPOS.get(0), 30 * 60, TimeUnit.SECONDS);
 //        request.getSession().setAttribute("admin_token",token);
 //        request.getSession().setAttribute("admin_user", adminPOS.get(0));
 //        request.getSession().setMaxInactiveInterval(30 * 60);
