@@ -19,7 +19,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import tk.mybatis.mapper.entity.Example;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -56,6 +55,9 @@ public class BackEndServiceImpl implements BackEndService {
 
     @Autowired
     private Gson gson;
+
+    @Autowired
+    private RedisUtils redisUtils;
 
     @Override
     public String addExcelInputStdAccount(MultipartFile file) {
@@ -327,17 +329,16 @@ public class BackEndServiceImpl implements BackEndService {
     @Override
     @Async("asyncServiceExecutor")
     public void preBackup(HttpServletRequest request) {
-        ServletContext servletContext = request.getServletContext();
         try {
             log.info("开始压缩备份文件...");
             String zipName = "backup-" + new SimpleDateFormat("yyyy-MM-dd").format(new Date());
             ZipFilesUtil.toZip(zipName);
-            servletContext.setAttribute("backupState", true);
+            redisUtils.set("backupState", true);
             log.info("压缩完成...{}", zipName);
         } catch (FileNotFoundException e) {
             log.info("备份失败...");
-            servletContext.removeAttribute("backupState");
-            servletContext.setAttribute("backupMessage", "上次备份失败请重新备份");
+            redisUtils.delete("backupState");
+            redisUtils.set("backupMessage", "上次备份失败请重新备份");
             e.printStackTrace();
         }
     }

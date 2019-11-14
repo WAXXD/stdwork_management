@@ -22,6 +22,11 @@ public class RedisUtils {
         operations.set(getKey(key), value, times, timeUtnit);
     }
 
+    public <T> void set(String key, T value) {
+        ValueOperations<String, T> operations = redisTemplate.opsForValue();
+        operations.set(getKey(key), value);
+    }
+
     public <T> T get(String key) {
         if (redisTemplate.hasKey(getKey(key))) {
             ValueOperations operations = redisTemplate.opsForValue();
@@ -31,7 +36,7 @@ public class RedisUtils {
     }
 
     public void delete(String key) {
-        redisTemplate.delete(key);
+        redisTemplate.delete(getKey(key));
     }
 
     public boolean hasKey(String key) {

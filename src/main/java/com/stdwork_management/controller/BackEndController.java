@@ -290,17 +290,14 @@ public class BackEndController {
     @Token(accountType = "admin")
     @ApiOperation("获取备份文件列表, 将返回的路径作为path参数传给download接口即可下载")
     public Result searchList(HttpServletRequest request){
-        ServletContext servletContext = request.getServletContext();
-        if(servletContext.getAttribute("backupState") != null && !(Boolean) servletContext.getAttribute("backupState")){
+        if(redisUtils.get("backupState") != null && !(Boolean) redisUtils.get("backupState")){
             throw new UserDefinedException(9999, "正在备份中，等待备份完成后获取列表");
         }
-        if(servletContext.getAttribute("backupMessage") != null){
-            servletContext.removeAttribute("backupMessage");
+        if(redisUtils.get("backupMessage") != null){
+            redisUtils.delete("backupMessage");
             throw new UserDefinedException(9999, "上次备份失败请重新备份");
         }
-
         File file = new File(workPath + "备份文件待下载区");
-
         List<LocalFileSysVO> path = Arrays.stream(file.listFiles()).map(f -> {
             LocalFileSysVO localFileSysVO = new LocalFileSysVO();
             localFileSysVO.setPath("备份文件待下载区/" + f.getName());
