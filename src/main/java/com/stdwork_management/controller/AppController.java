@@ -29,9 +29,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Date;
-import java.util.List;
-import java.util.Properties;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -90,9 +88,14 @@ public class AppController {
 //        request.getSession().setAttribute("token",token);
 //        request.getSession().setAttribute("user", stdAccountPOS.get(0));
         redisUtils.set(token, token, 30 * 60, TimeUnit.SECONDS);
-        redisUtils.set(token + "_user", stdAccountPOS.get(0), 30 * 60, TimeUnit.SECONDS);
-        request.getSession().setMaxInactiveInterval(30 * 60);
-        return new Result().setData(token);
+        StdAccountPO po = stdAccountPOS.get(0);
+        redisUtils.set(token + "_user", po, 30 * 60, TimeUnit.SECONDS);
+//        request.getSession().setMaxInactiveInterval(30 * 60);
+        Map<String, String> map = new HashMap<>();
+        map.put("token", token);
+        map.put("username", po.getName());
+        map.put("stdNo", po.getStdNo());
+        return new Result().setData(map);
     }
 
     @PostMapping("changePwd")
