@@ -7,6 +7,7 @@ import org.apache.commons.lang.StringUtils;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 /**
  * description:
@@ -51,13 +52,15 @@ public class ListFileUtil {
 
     }
 
+    private static final String dataPattern = "-(([0-9]{3}[1-9]|[0-9]{2}[1-9][0-9]{1}|[0-9]{1}[1-9][0-9]{2}|[1-9][0-9]{3})(((0[13578]|" +
+            "1[02])(0[1-9]|[12][0-9]|3[01]))|((0[469]|11)(0[1-9]|[12][0-9]|30))|(02-(0[1-9]|[1][0-9]|2[0-8])))" +
+            ")|((([0-9]{2})(0[48]|[2468][048]|[13579][26])|((0[48]|[2468][048]|[3579][26])00))0229)(([0-9]{3}[" +
+            "1-9]|[0-9]{2}[1-9][0-9]{1}|[0-9]{1}[1-9][0-9]{2}|[1-9][0-9]{3})(((0[13578]|1[02])(0[1-9]|[12][0-9" +
+            "]|3[01]))|((0[469]|11)(0[1-9]|[12][0-9]|30))|(02-(0[1-9]|[1][0-9]|2[0-8]))))|((([0-9]{2})(0[48]|[2" +
+            "468][048]|[13579][26])|((0[48]|[2468][048]|[3579][26])00))0229)$";
+
     public static void main(String[] args) {
-//        FileDirBean test = getDirJson("-2019-01-01");
-//        Gson gson = new Gson();
-//        System.out.println(gson.toJson(test));
-        String s = "E:/z04/乙苯脱氢反应装置/乙苯脱氢反应装置-sa3";
-        File file = new File("E:\\z04\\乙苯脱氢反应装置");
-        System.out.println(getDirJson("乙苯脱氢反应装置/乙苯脱氢反应装置-EDR2/waxxd-2019-01-01-20191106"));
+        System.out.println(Pattern.matches(dataPattern, "-20190109"));
     }
 }
 

@@ -30,10 +30,7 @@ import java.net.URLDecoder;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
@@ -154,6 +151,7 @@ public class BackEndController {
 //        request.getSession().setAttribute("admin_token",token);
 //        request.getSession().setAttribute("admin_user", adminPOS.get(0));
 //        request.getSession().setMaxInactiveInterval(30 * 60);
+        Map<String, String> map = new HashMap<>();
         return new Result().setData(token);
     }
 
@@ -289,7 +287,7 @@ public class BackEndController {
     @GetMapping("searchBackupList")
     @Token(accountType = "admin")
     @ApiOperation("获取备份文件列表, 将返回的路径作为path参数传给download接口即可下载")
-    public Result searchList(HttpServletRequest request){
+    public Result searchList(HttpServletRequest request) {
         if(redisUtils.get("backupState") != null && !(Boolean) redisUtils.get("backupState")){
             throw new UserDefinedException(9999, "正在备份中，等待备份完成后获取列表");
         }
@@ -305,5 +303,4 @@ public class BackEndController {
         }).collect(Collectors.toList());
         return new Result().setData(path);
     }
-
 }

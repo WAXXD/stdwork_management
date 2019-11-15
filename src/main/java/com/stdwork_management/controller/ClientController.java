@@ -91,7 +91,7 @@ public class ClientController {
     public Result dirInPath( String path){
         Example example = new Example(LocalFileSysPO.class);
         example.and().andEqualTo("level", (byte)3).andEqualTo("parentPath", workPath + path);
-        List<String> dirsInPath = localFileSysMapper.selectByExample(example).stream().filter(po -> po.getType() == 0).map(po -> po.getFilename()).collect(Collectors.toList());
+        List<String> dirsInPath = localFileSysMapper.selectByExample(example).stream().map(po -> po.getFilename()).collect(Collectors.toList());
         return new Result().setData(dirsInPath);
     }
 
@@ -112,21 +112,37 @@ public class ClientController {
         sysPO.setPath(workPath + dest);
         List<LocalFileSysPO> sysPOList = localFileSysMapper.select(sysPO);
         values.stream().forEach(item -> {
-            String unzipDir = ZipFilesUtil.createUnzipDir(item.getOriginalFilename(), dest);
+            String filename = item.getOriginalFilename();
+            String unzipDir = ZipFilesUtil.createUnzipDir(filename, dest);
+            boolean isDir = StringUtils.contains(filename, "$$") ? false : true;
             LocalFileSysPO localFileSysPO = new LocalFileSysPO();
+            if(isDir){
+                localFileSysPO.setType((byte) 0);
+
+            } else {
+                localFileSysPO.setType((byte) 1);
+            }
             localFileSysPO.setPath(unzipDir);
-            localFileSysPO.setLevel((byte) 3);
-            localFileSysPO.setType((byte) 0);
             localFileSysPO.setFilename(unzipDir.substring(unzipDir.lastIndexOf("/") + 1));
             localFileSysPO.setParentPath(workPath + dest);
+            localFileSysPO.setLevel((byte) 3);
             localFileSysPO.setCreateTime(new Date());
             localFileSysPO.setPid(sysPOList.get(0).getId());
             localFileSysPO.setId(UUIDUtil.getUUID());
             localFileSysPOList.add(localFileSysPO);
+
         });
         Condition condition = new Condition(LocalFileSysPO.class);
         Example.Criteria criteria = condition.or();
         localFileSysPOList.forEach(po -> criteria.orLike("path", po.getPath().substring(0, po.getPath().lastIndexOf("-") + 1) + "%"));
+        Optional.ofNullable(localFileSysMapper.selectByCondition(condition)).orElse(new ArrayList<>())
+                .forEach( po -> {
+                    try {
+                        FileUtils.forceDelete(new File(po.getPath()));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                });
         localFileSysMapper.deleteByCondition(condition);
         localFileSysMapper.insertList(localFileSysPOList);
         asyncServiceExecutor.execute(() -> {

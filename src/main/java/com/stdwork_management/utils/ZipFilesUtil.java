@@ -118,6 +118,7 @@ public class ZipFilesUtil {
     }
 
     public static void unZip(String unZipFileName, String dest) throws RuntimeException {
+        boolean isDir = StringUtils.contains(unZipFileName, "$$") ? false : true;
         long start = System.currentTimeMillis();
         File srcFile = new File(unzipBasePath + dest + "/temp/" + unZipFileName);
 //        if (!srcFile.exists()) {
@@ -133,18 +134,33 @@ public class ZipFilesUtil {
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }
+        String destPath = "";
+        String currentDay = new SimpleDateFormat("yyyyMMdd").format(new Date());
+        if(isDir){
+            destPath = unzipDestPath + dest + "/" + unZipFileName.substring(0, unZipFileName.lastIndexOf(".")) + "-" + currentDay;
+        } else {
+            destPath = unzipDestPath + dest + "/";
+        }
 
-        String destPath = createUnzipDir(unZipFileName, dest);
         ZipFile zipFile = null;
         InputStream is = null;
         FileOutputStream fos = null;
         try {
             zipFile = new ZipFile(srcFile);
             Enumeration<?> entries = zipFile.entries();
+
             while (entries.hasMoreElements()) {
                 ZipEntry entry = (ZipEntry) entries.nextElement();
                 log.info("解压 {}", entry.getName());
-                String dirPath = destPath + "/" + entry.getName();
+                String dirPath;
+                if(isDir){
+                    dirPath = destPath + "/" + entry.getName();
+                } else {
+                    String tempName = StringUtils.replace(unZipFileName, "$$.zip", "");
+                    String[] split = tempName.split("\\.");
+                    dirPath = destPath + "/" + split[0] + "-" + currentDay + "." + split[1];
+                }
+
                 if (entry.isDirectory()) {
                     File dir = new File(dirPath);
                     dir.mkdirs();
@@ -167,6 +183,8 @@ public class ZipFilesUtil {
                     is.close();
                 }
             }
+
+
             long end = System.currentTimeMillis();
             log.info("unzip {} time -> {}", unZipFileName,end - start);
         } catch (Exception e) {
@@ -197,6 +215,7 @@ public class ZipFilesUtil {
     }
 
     public static String createUnzipDir(String unZipFileName, String dest){
+        boolean isDir = StringUtils.contains(unZipFileName, "$$") ? false : true;
         new File(unzipDestPath + dest).listFiles( f -> {
             String filename = f.getName();
             if(!StringUtils.equals(filename, "temp") &&
@@ -217,16 +236,31 @@ public class ZipFilesUtil {
         }
         String fileName = srcFile.getName();
         String currentDay = new SimpleDateFormat("yyyyMMdd").format(new Date());
-        String destPath = unzipDestPath + dest + "/" + fileName.substring(0, fileName.lastIndexOf(".")) + "-" + currentDay;
+        String destPath;
+        if(!isDir){
+            String tempName = StringUtils.replace(unZipFileName, "$$.zip", "");
+            String[] split = tempName.split("\\.");
+            destPath = unzipDestPath + dest + "/" + split[0] + "-" + currentDay + "." + split[1];
+        } else {
+            destPath = unzipDestPath + dest + "/" + fileName.substring(0, fileName.lastIndexOf(".")) + "-" + currentDay;
+        }
         File file = new File(destPath);
         try {
-            FileUtils.deleteDirectory(file);
-            file.mkdirs();
+            if(isDir){
+                FileUtils.deleteDirectory(file);
+                file.mkdirs();
+            } else {
+                FileUtils.forceDeleteOnExit(file);
+                file.createNewFile();
+            }
+
         } catch (IOException e) {
             e.printStackTrace();
         }
         return destPath;
     }
+
+
 
     public static void main(String[] args) throws FileNotFoundException {
         toZip("");
