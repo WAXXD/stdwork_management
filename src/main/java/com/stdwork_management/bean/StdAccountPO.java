@@ -5,6 +5,7 @@ import lombok.Data;
 
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -17,8 +18,9 @@ import java.util.Date;
 @Data
 @Table(name = "std_account")
 //@JsonInclude(JsonInclude.Include.NON_EMPTY)
-public class StdAccountPO {
+public class StdAccountPO implements Serializable {
 
+    private static final long serialVersionUID = -8500803358494468305L;
     @Id
     private String id;
 
