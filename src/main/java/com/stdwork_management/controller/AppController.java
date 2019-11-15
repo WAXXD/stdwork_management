@@ -91,10 +91,11 @@ public class AppController {
         StdAccountPO po = stdAccountPOS.get(0);
         redisUtils.set(token + "_user", po, 30 * 60, TimeUnit.SECONDS);
 //        request.getSession().setMaxInactiveInterval(30 * 60);
-        Map<String, String> map = new HashMap<>();
+        Map<String, Object> map = new HashMap<>();
         map.put("token", token);
         map.put("username", po.getName());
         map.put("stdNo", po.getStdNo());
+        map.put("graduationTime", po.getCreateTime());
         return new Result().setData(map);
     }
 
