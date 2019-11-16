@@ -223,7 +223,12 @@ public class BackEndServiceImpl implements BackEndService {
                 localFileSysPOPageInfo = new PageInfo<>(localFileSysPOS);
             } else {
                 File file = new File(workPath + path);
-                localFileSysVOList = Arrays.stream(file.listFiles()).map(f -> {
+                localFileSysVOList = Arrays.stream(file.listFiles(f -> {
+                    if(f == null){
+                        return false;
+                    }
+                    return f.getName().equals(".init");
+                })).map(f -> {
                     LocalFileSysVO fileSysVO = new LocalFileSysVO();
                     fileSysVO.setFilename(f.getName());
     //               fileSysVO.setPath(substring.replaceAll(File.separator, "/"));
@@ -341,6 +346,11 @@ public class BackEndServiceImpl implements BackEndService {
             redisUtils.set("backupMessage", "上次备份失败请重新备份");
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void deleteByIds(List<String> ids) {
+        localFileSysMapper.deleteByIds(ids);
     }
 
 }

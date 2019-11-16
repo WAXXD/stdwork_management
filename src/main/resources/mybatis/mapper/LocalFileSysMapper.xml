@@ -17,4 +17,13 @@
     <select id="fullIndexSearch" parameterType="java.lang.String" resultMap="baseResult">
         select * from local_file_sys where match(path) against(#{searchKey})
     </select>
+
+    <delete id="deleteByIds" parameterType="list">
+        delete from local_file_sys
+        where id in (
+            <foreach collection="list" item="id" separator=",">
+                #{id}
+            </foreach>
+        )
+    </delete>
 </mapper>

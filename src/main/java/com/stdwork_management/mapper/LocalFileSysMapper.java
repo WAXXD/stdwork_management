@@ -19,4 +19,6 @@ import java.util.List;
 public interface LocalFileSysMapper extends ConditionMapper<LocalFileSysPO>,InsertListMapper<LocalFileSysPO>, Mapper<LocalFileSysPO> {
 
     List<LocalFileSysPO> fullIndexSearch(String searchKey);
+
+    void deleteByIds(List<String> ids);
 }

@@ -216,20 +216,20 @@ public class ZipFilesUtil {
 
     public static String createUnzipDir(String unZipFileName, String dest){
         boolean isDir = StringUtils.contains(unZipFileName, "$$") ? false : true;
-        new File(unzipDestPath + dest).listFiles( f -> {
-            String filename = f.getName();
-            if(!StringUtils.equals(filename, "temp") &&
-                    !StringUtils.equals(filename, ".init") &&
-                    StringUtils.equals(filename.substring(0, filename.length() - 9), unZipFileName.substring(0, unZipFileName.lastIndexOf(".")))){
-                try {
-                    FileUtils.deleteDirectory(f);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                return true;
-            }
-            return false;
-        });
+//        new File(unzipDestPath + dest).listFiles( f -> {
+//            String filename = f.getName();
+//            if(!StringUtils.equals(filename, "temp") &&
+//                    !StringUtils.equals(filename, ".init") &&
+//                    StringUtils.equals(filename.substring(0, filename.length() - 9), unZipFileName.substring(0, unZipFileName.lastIndexOf(".")))){
+//                try {
+//                    FileUtils.deleteDirectory(f);
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//                return true;
+//            }
+//            return false;
+//        });
         File srcFile = new File(unzipBasePath + dest + "/temp/" + unZipFileName);
         if (!srcFile.exists()) {
             throw new RuntimeException(srcFile.getPath() + "所指文件不存在");

@@ -28,6 +28,5 @@ public class ThreadLocalUtil {
     public static void put(String key, Object value){
         Map<String, Object> map = THREAD_LOCAL.get();
         map.put(key, value);
-
     }
 }
