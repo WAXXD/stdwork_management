@@ -2,7 +2,6 @@ package com.stdwork_management.utils;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 
 /**
  * description:
@@ -13,16 +12,22 @@ import java.util.Optional;
  **/
 public class ThreadLocalUtil {
 
-    private static final ThreadLocal<Map<String, Object>> THREAD_LOCAL = new ThreadLocal<>();
+    private static final ThreadLocal<Map<String, Object>> THREAD_LOCAL = new ThreadLocal(){
+        protected  Map<String, Object> initialValue(){
+            return new HashMap<>();
+        }
+    };
+
+
 
     public static Object get(String key){
         Map<String, Object> map = THREAD_LOCAL.get();
-        return map.get(key) == null ? null : map.get(key);
+        return map.get(key);
     }
 
     public static void put(String key, Object value){
         Map<String, Object> map = THREAD_LOCAL.get();
-        Optional.ofNullable(map).orElse(map = new HashMap<>()).put(key, value);
-        THREAD_LOCAL.set(map);
+        map.put(key, value);
+
     }
 }
