@@ -46,9 +46,12 @@ spring:
   redis:
     prefix: std_adm_
     database: 0
-    host: ENC(ueZeFPmPimyQmyiDGN0vrHY8IPh5LUSn)
-    password: ENC(BEB68ywS5bccTVqdBhu6GFojGGzrunUz)
-    port: 6487
+#    host: ENC(ueZeFPmPimyQmyiDGN0vrHY8IPh5LUSn)
+#    password: ENC(BEB68ywS5bccTVqdBhu6GFojGGzrunUz)
+#    port: 6487
+    host: localhost
+    password: 123456r
+    port: 6379
     max-active: 8
     max-wait: -1
     max-idle: 8
