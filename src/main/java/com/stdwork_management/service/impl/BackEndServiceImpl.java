@@ -75,8 +75,15 @@ public class BackEndServiceImpl implements BackEndService {
             }
             AdminPO user = (AdminPO)ThreadLocalUtil.get("user");
             log.info("后台用户{}导入了{}学生",  user.getAdminName(), gson.toJson(stdAccountPOS));
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
+            String message = e.getCause().getMessage();
+            if(StringUtils.contains(message, "Duplicate")){
+                String[] s = message.split(" ");
+                throw new UserDefinedException(9999, "学号:" + s[2] + "已存在，请修改或者删除此学号");
+            } else {
+                throw new UserDefinedException(9999, e.getCause().getMessage());
+            }
         }
         return "数据导入完成";
     }
@@ -129,7 +136,7 @@ public class BackEndServiceImpl implements BackEndService {
             parent.setType((byte) 0);
             parent.setCreateTime(new Date());
             parent.setId(UUIDUtil.getUUID());
-            parent.setPid("0");
+            parent.setPid("1");
             parent.setLevel((byte) 1);
             parent.setParentPath(workPath);
             parent.setFilename(parentPath.substring(parentPath.lastIndexOf("/") + 1));
@@ -183,10 +190,13 @@ public class BackEndServiceImpl implements BackEndService {
         File file = new File(path);
         if(file.exists()){
             try {
-                FileUtils.deleteDirectory(file);
+                log.info("[{}]文件存在", path);
+                FileUtils.forceDelete(file);
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        } else{
+            log.info("[{}]文件不存在", path);
         }
     }
 
@@ -204,6 +214,7 @@ public class BackEndServiceImpl implements BackEndService {
             if(StringUtils.isNotBlank(path)){
                 example.and().andEqualTo("parentPath", workPath + path);
             }
+            example.setOrderByClause("create_time");
             example.and().andLike("filename", "%" + searchKey + "%");
             localFileSysPOS = localFileSysMapper.selectByExample(example);
             localFileSysPOPageInfo = new PageInfo<>(localFileSysPOS);
@@ -211,7 +222,9 @@ public class BackEndServiceImpl implements BackEndService {
 //            localFileSysPOPageInfo = new PageInfo<>(localFileSysPOS);
         } else if(StringUtils.isBlank(path)){
             localFileSysPO.setLevel((byte) 1);
-            localFileSysPOS = localFileSysMapper.select(localFileSysPO);
+            example.and().andEqualTo(localFileSysPO);
+            example.setOrderByClause("path");
+            localFileSysPOS = localFileSysMapper.selectByExample(example);
             localFileSysPOPageInfo = new PageInfo<>(localFileSysPOS);
         } else {
             if (level == null){
@@ -219,15 +232,16 @@ public class BackEndServiceImpl implements BackEndService {
             }
             if(level < 3){
                 example.and().andEqualTo("parentPath", workPath + path);
+                example.setOrderByClause("path");
                 localFileSysPOS = localFileSysMapper.selectByExample(example);
                 localFileSysPOPageInfo = new PageInfo<>(localFileSysPOS);
             } else {
                 File file = new File(workPath + path);
                 localFileSysVOList = Arrays.stream(file.listFiles(f -> {
-                    if(f == null){
+                    if(f == null) {
                         return false;
                     }
-                    return f.getName().equals(".init");
+                    return !f.getName().equals(".init");
                 })).map(f -> {
                     LocalFileSysVO fileSysVO = new LocalFileSysVO();
                     fileSysVO.setFilename(f.getName());
@@ -280,6 +294,7 @@ public class BackEndServiceImpl implements BackEndService {
         stdAccountPO.setGraduated(null);
         BeanUtils.copyProperties(stdUserBackendManageVO, stdAccountPO);
         example.and().andEqualTo(stdAccountPO);
+        example.setOrderByClause("create_time desc");
         example.selectProperties("id", "name","stdNo", "graduationTime","createTime", "updateTime","graduated");
         List<StdAccountPO> stdAccountPOS;
         stdAccountPOS = stdAccountMapper.selectByExample(example);
@@ -333,7 +348,7 @@ public class BackEndServiceImpl implements BackEndService {
 
     @Override
     @Async("asyncServiceExecutor")
-    public void preBackup(HttpServletRequest request) {
+    public void preBackup(HttpServletRequest request, String backUpPath) {
         try {
             log.info("开始压缩备份文件...");
             String zipName = "backup-" + new SimpleDateFormat("yyyy-MM-dd").format(new Date());

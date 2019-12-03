@@ -34,6 +34,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
                 .addResourceLocations("classpath:/META-INF/resources/");
         registry.addResourceHandler("/webjars/**")
                 .addResourceLocations("classpath:/META-INF/resources/webjars/");
+        registry.addResourceHandler("/file/**").addResourceLocations("file:" + PropertiesUtils.getValue("config.properties", "server.workpath"));
     }
 
 
@@ -93,4 +94,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     public String getServerWorkPath(){
         return PropertiesUtils.getValue("config.properties", "server.workpath");
     }
+
+
+
 }

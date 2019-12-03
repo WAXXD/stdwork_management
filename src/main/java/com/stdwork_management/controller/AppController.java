@@ -83,13 +83,13 @@ public class AppController {
             log.info("已毕业此账号不能使用");
             throw new UserDefinedException(9999, "已毕业此账号不能使用");
         }
-        log.info("{}同学登录到系统", stdAccountPOS.get(0).getName());
+        log.info("[ {} ]同学登录到系统", stdAccountPOS.get(0).getName());
         String token = MD5Util.getMD5(stdAccountPOS.get(0).toString() + new Date().getTime());
 //        request.getSession().setAttribute("token",token);
 //        request.getSession().setAttribute("user", stdAccountPOS.get(0));
         redisUtils.set(token, token, 30 * 60, TimeUnit.SECONDS);
         StdAccountPO po = stdAccountPOS.get(0);
-        redisUtils.set(token + "_user", po, 30 * 60, TimeUnit.SECONDS);
+        redisUtils.set("user-" + token, po, 30 * 60, TimeUnit.SECONDS);
 //        request.getSession().setMaxInactiveInterval(30 * 60);
         Map<String, Object> map = new HashMap<>();
         map.put("token", token);
@@ -114,7 +114,7 @@ public class AppController {
         }
         stdUserChangePWDVO.setPassword(MD5Util.getMD5(stdUserChangePWDVO.getPassword()));
         appService.changePwd(stdUserChangePWDVO);
-        log.info("{}同学修改了密码", user.getName());
+        log.info("[ {} ]同学修改了密码", user.getName());
         return new Result().setData("密码修改成功");
 
     }
@@ -140,13 +140,13 @@ public class AppController {
                 response.addHeader("Content-Disposition", "attachment; filename=" + new String(downloadFile.getName().getBytes("gbk"), "iso8859-1"));
                 response.setContentType("application/x-gzip");
                 Files.copy(file, response.getOutputStream());
-                log.info("app用户{}下载了文件{}", user.getName(), file.getFileName());
+                log.info("app用户[ {} ]下载了文件[ {} ]", user.getName(), file.getFileName());
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
         } else {
-            log.info("app用户{}下载的文件{}文件不存在", user.getName(), file.getFileName());
+            log.info("app用户[ {} ]下载的文件[ {} ]文件不存在", user.getName(), file.getFileName());
             throw new UserDefinedException(9999, "文件不存在或者不是可供下载文件");
         }
     }

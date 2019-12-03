@@ -48,28 +48,30 @@ public class AuthorizeInterceptor implements HandlerInterceptor {
                 if(StringUtils.equals(methodAnnotation.accountType(), "std")){
 //                    cachedToken = (String)request.getSession().getAttribute("token");
 //                    user = request.getSession().getAttribute("user");
-                    cachedToken =  (String)redisUtils.get(token);
-                    user = redisUtils.get(token + "_user");
+                    cachedToken =  (String)redisUtils.getAndUpdateExpire(token);
+                    user = redisUtils.getAndUpdateExpire("user-" + token);
+
                 } else if (StringUtils.equals(methodAnnotation.accountType(), "admin")){
 //                    cachedToken = (String)request.getSession().getAttribute("admin_token");
 //                    user = request.getSession().getAttribute("admin_user");
-                    cachedToken =  (String) redisUtils.get(token);
-                    user = redisUtils.get(token + "_admin_user");
+                    cachedToken =  (String) redisUtils.getAndUpdateExpire(token);
+                    user = redisUtils.getAndUpdateExpire("admin_user-" + token);
                 } else {
-                    throw new UserDefinedException(9999, "您未登录到系统,请登录后访问");
+                    throw new UserDefinedException(99999999, "您未登录到系统,请登录后访问");
                 }
+
                 if(StringUtils.isNotBlank(token) && token != null){
                     if(StringUtils.equals(token,  cachedToken) || StringUtils.equals(cachedToken, tokenFromCookie)){
                         if(user == null){
-                            throw new UserDefinedException(9999, "登录token过期, 请重新登录");
+                            throw new UserDefinedException(99999999, "登录token过期, 请重新登录");
                         }
                         ThreadLocalUtil.put("user", user);
                         return true;
                     } else {
-                        throw new UserDefinedException(9999, "验证失败，非法访问被拒绝");
+                        throw new UserDefinedException(99999999, "验证失败，非法访问被拒绝");
                     }
                 } else {
-                    throw new UserDefinedException(9999, "您未登录到系统,请登录后访问");
+                    throw new UserDefinedException(99999999, "您未登录到系统,请登录后访问");
                 }
 
             } else {

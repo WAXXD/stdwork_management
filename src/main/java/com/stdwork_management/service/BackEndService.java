@@ -36,7 +36,7 @@ public interface BackEndService {
 
     void stdCreate(StdUserBackendManageAddVO stdUserBackendManageAddVO);
 
-    void preBackup(HttpServletRequest request);
+    void preBackup(HttpServletRequest request, String backUpPath);
 
     void deleteByIds(List<String> ids);
 }

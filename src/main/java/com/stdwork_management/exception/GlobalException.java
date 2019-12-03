@@ -22,6 +22,6 @@ public class GlobalException {
     @ExceptionHandler(Exception.class)
     public Result exception(Exception ex) {
         ex.printStackTrace();
-        return new Result().setCode(9999).setMessage("出现异常");
+        return new Result().setCode(9999).setMessage(ex.getCause().getMessage());
     }
 }

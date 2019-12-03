@@ -98,6 +98,7 @@ public class ClientController {
     @GetMapping("dirInPath")
     public Result dirInPath( String path){
         Example example = new Example(LocalFileSysPO.class);
+        example.setOrderByClause("create_time desc");
         example.and().andEqualTo("level", (byte)3).andEqualTo("parentPath", workPath + path);
         List<String> dirsInPath = localFileSysMapper.selectByExample(example).stream().map(po -> po.getFilename()).collect(Collectors.toList());
         return new Result().setData(dirsInPath);
@@ -171,15 +172,18 @@ public class ClientController {
             }
         });
         String remoteAddr = request.getRemoteAddr();
-        localFileSysPOList.forEach( item -> log.info("{}用户上传了文件{}", remoteAddr, item.getFilename()));
+        localFileSysPOList.forEach( item -> log.info("[ {} ]用户上传了文件[ {} ]", remoteAddr, item.getFilename()));
         return "ok";
     }
 
     @GetMapping("selectDest")
     public Result selectDest(){
-        LocalFileSysPO localFileSysPO = new LocalFileSysPO();
-        localFileSysPO.setLevel((byte) 2);
-        List<String> list = localFileSysMapper.select(localFileSysPO).stream().map(po -> po.getPath().substring(workPath.length())).collect(Collectors.toList());
+//        LocalFileSysPO localFileSysPO = new LocalFileSysPO();
+//        localFileSysPO.setLevel((byte) 2);
+        Example example = new Example(LocalFileSysPO.class);
+        example.setOrderByClause("path");
+        example.and().andEqualTo("level", 2);
+        List<String> list = localFileSysMapper.selectByExample(example).stream().map(po -> po.getPath().substring(workPath.length())).collect(Collectors.toList());
         return new Result().setData(list);
     }
 
@@ -266,7 +270,6 @@ public class ClientController {
             localFileSysMapper.deleteByIds(waitingDelete);
         }
 
-
         localFileSysMapper.insertList(localFileSysPOList);
         asyncServiceExecutor.execute(() -> {
             values.stream().forEach( item -> ZipFilesUtil.unZip(item.getOriginalFilename(), dest));
@@ -277,7 +280,7 @@ public class ClientController {
             }
         });
         String remoteAddr = request.getRemoteAddr();
-        localFileSysPOList.forEach( item -> log.info("{}用户上传了文件{}", remoteAddr, item.getFilename()));
+        localFileSysPOList.forEach( item -> log.info("[ {} ]用户上传了文件[ {} ]", remoteAddr, item.getFilename()));
         return "ok";
     }
 }

@@ -16,17 +16,17 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.ResourceUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.io.File;
 import java.io.IOException;
-import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -77,25 +77,29 @@ public class BackEndController {
         AdminPO user1 = (AdminPO)ThreadLocalUtil.get("user");
         File file = null;
         try {
-            file = new File(URLDecoder.decode(BackEndController.class.getClassLoader().getResource("学生目录.xlsx").getPath(), "utf-8"));
+
+            file = ResourceUtils.getFile("classpath:学生目录.xlsx");
             response.setContentType("application/x-download");
             response.addHeader("Content-Disposition", "attachment; filename=" + new String(file.getName().getBytes("gbk"), "iso8859-1"));
             FileUtils.copyFile(file, response.getOutputStream());
+
         } catch (IOException e) {
             e.printStackTrace();
-            log.info("后台用户{}下载模板失败{}",user1.getAdminName(), file.getName());
+            log.info("后台用户[ {} ]下载模板失败[ {} ]",user1.getAdminName(), file.getName());
             throw new UserDefinedException(9999, "下载模板异常");
 
         }
-        log.info("后台用户{}下载模板{}",user1.getAdminName(), file.getName());
+        log.info("后台用户[ {} ]下载模板[ {} ]",user1.getAdminName(), file.getName());
     }
 
     @GetMapping("stdList")
     @Token(accountType = "admin")
     @ApiOperation("获取学生用户列表")
     public Result stdList(@ApiParam(value = "查询参数") StdUserBackendManageVO stdUserBackendManageVO){
+        AdminPO user1 = (AdminPO)ThreadLocalUtil.get("user");
         PageHelper.startPage(stdUserBackendManageVO.getPageNum(), stdUserBackendManageVO.getPageSize());
         List<StdAccountPO> list = backEndService.stdList(stdUserBackendManageVO);
+        log.info("后台管理[ {} ]请求获取学生列表:\n[ {} ]", user1.getAdminName(), gson.toJson(list));
         return new Result().setData(new PageInfo<>(list));
     }
 
@@ -103,7 +107,6 @@ public class BackEndController {
     @Token(accountType = "admin")
     @ApiOperation("后台修改学生信息")
     public Result stdModify(@ApiParam(value = "修改参数") StdUserBackendManageCURDVO stdUserBackendManageCURDVO){
-
         backEndService.stdModify(stdUserBackendManageCURDVO);
         return new Result();
     }
@@ -116,7 +119,7 @@ public class BackEndController {
         if( ids == null){
             throw new UserDefinedException(9999, "传入的参数为空");
         }
-        log.info("后台管理{}删除了学生{}", user1.getAdminName(), gson.toJson(ids));
+        log.info("后台管理[ {} ]删除了学生[ {} ]", user1.getAdminName(), gson.toJson(ids));
         backEndService.stdDelete(ids);
         return new Result();
     }
@@ -128,7 +131,7 @@ public class BackEndController {
         BindingResultUtil.checkInputParams(bindingResult);
         backEndService.stdCreate(stdVO);
         AdminPO user1 = (AdminPO)ThreadLocalUtil.get("user");
-        log.info("后台管理{}创建了学生{}", user1.getAdminName(), stdVO.getStdNo());
+        log.info("后台管理[ {} ]创建了学生[ {} ]", user1.getAdminName(), stdVO.getStdNo());
         return new Result();
     }
 
@@ -144,10 +147,10 @@ public class BackEndController {
             throw new UserDefinedException(9999, "登录失败管理员名称或密码错误");
         }
 
-        log.info("后台用户{}登录到系统", adminLoginVO.getAdminName());
+        log.info("后台用户[ {} ]登录到系统", adminLoginVO.getAdminName());
         String token = MD5Util.getMD5(adminPOS.get(0).toString() + new Date().getTime());
         redisUtils.set(token, token, 30 * 60, TimeUnit.SECONDS);
-        redisUtils.set( token + "_admin_user", adminPOS.get(0), 30 * 60, TimeUnit.SECONDS);
+        redisUtils.set(  "admin_user-" + token , adminPOS.get(0), 30 * 60, TimeUnit.SECONDS);
 //        request.getSession().setAttribute("admin_token",token);
 //        request.getSession().setAttribute("admin_user", adminPOS.get(0));
 //        request.getSession().setMaxInactiveInterval(30 * 60);
@@ -169,7 +172,7 @@ public class BackEndController {
             throw new UserDefinedException(9999, "两次输入密码不一致");
         }
         AdminPO user1 = (AdminPO)ThreadLocalUtil.get("user");
-        log.info("后台用户{}修改了密码",user1.getAdminName());
+        log.info("后台用户[ {} ]修改了密码",user1.getAdminName());
         adminChangePWDVO.setPassword(MD5Util.getMD5(adminChangePWDVO.getPassword()));
         backEndService.changePassword(adminChangePWDVO);
         return new Result().setData("密码修改成功");
@@ -184,7 +187,7 @@ public class BackEndController {
         BindingResultUtil.checkInputParams(bindingResult);
         backEndService.creatModel(localFileSysCURDVO);
         AdminPO user1 = (AdminPO)ThreadLocalUtil.get("user");
-        log.info("后台用户{}新增了实验模块{}",user1.getAdminName(), localFileSysCURDVO.getFilename());
+        log.info("后台用户[ {} ]新增了实验模块[ {} ]",user1.getAdminName(), localFileSysCURDVO.getFilename());
         return new Result();
     }
 
@@ -198,7 +201,7 @@ public class BackEndController {
 
         backEndService.delete(workPath + path);
         AdminPO user1 = (AdminPO)ThreadLocalUtil.get("user");
-        log.info("后台用户{}删除了实验模块{}",user1.getAdminName(), path);
+        log.info("后台用户[ {} ]删除了实验模块[ {} ]",user1.getAdminName(), path);
         return new Result();
     }
 
@@ -208,9 +211,10 @@ public class BackEndController {
     public Result modelList(@ApiParam(value = "父模块名称，一级模块的父模块为空") @RequestParam(required = false) String filename){
         String path = workPath + Optional.ofNullable(filename).orElse("");
         File file = new File(path);
-        List<LocalFileSysVO> list = Arrays.stream(file.listFiles(f -> f.isDirectory()))
+        List<LocalFileSysVO> list = Arrays.stream(file.listFiles(f -> f.isDirectory())).filter( f -> !StringUtils.equals(f.getName(), "备份文件待下载区"))
                 .map( f -> new LocalFileSysVO().setFilename(f.getName()).setType((byte) 0).setPath(f.getPath().replaceAll("\\\\","/").substring(workPath.length())))
                 .collect(Collectors.toList());
+//        Collections.reverse(list);
         return new Result().setCount(list.size()).setData(list);
     }
 
@@ -235,7 +239,7 @@ public class BackEndController {
         }
         backEndService.delete(workPath + path);
         AdminPO user1 = (AdminPO)ThreadLocalUtil.get("user");
-        log.info("后台用户{}删除了实上传文件{}",user1.getAdminName(), path);
+        log.info("后台用户[ {} ]删除了实上传文件[ {} ]",user1.getAdminName(), path);
         return new Result();
     }
 
@@ -249,14 +253,16 @@ public class BackEndController {
             try {
                 File file1 = new File(workPath + path);
                 response.setContentType("application/x-gzip");
-                response.addHeader("Content-Disposition", "attachment; filename=" + new String(file1.getName().getBytes("gbk"), "iso8859-1"));
+//                response.addHeader("Content-Disposition", "attachment; filename=" + new String(file1.getName().getBytes("gbk"), "iso8859-1"));
+                String encode = URLEncoder.encode(file1.getName(), "utf-8");
+                response.addHeader("Content-Disposition", "attachment; filename=" + encode);
                 Files.copy(file, response.getOutputStream());
-                log.info("后台用户{}下载了文件{}",user1.getAdminName(), path);
+                log.info("后台用户[ {} ]下载了文件[ {} ]",user1.getAdminName(), path);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         } else {
-            log.info("后台用户{}下载文件{}不存在",user1.getAdminName(), path);
+            log.info("后台用户[ {} ]下载文件[ {} ]不存在",user1.getAdminName(), path);
             throw new UserDefinedException(9999, "文件不存在或者不是可供下载文件");
         }
     }
@@ -274,13 +280,13 @@ public class BackEndController {
     @GetMapping("preBackup")
     @ApiOperation("准备导出")
     @Token(accountType = "admin")
-    public Result preBackup(HttpServletRequest request) {
-        ServletContext servletContext = request.getServletContext();
-        if(servletContext.getAttribute("backupState") != null && !(Boolean) servletContext.getAttribute("backupState")) {
+    public Result preBackup(HttpServletRequest request,@RequestParam(required = false) String backupPath) {
+//        ServletContext servletContext = request.getServletContext();
+        if(redisUtils.get("backupState") != null && !(Boolean) redisUtils.get("backupState")) {
             throw new UserDefinedException(9999, "正在准备备份中, 请不要重复尝试");
         }
-        servletContext.setAttribute("backupState", false);
-        backEndService.preBackup(request);
+        redisUtils.set("backupState", false);
+        backEndService.preBackup(request, backupPath);
         return new Result().setMessage("正在备份中...备份完成后即可下载");
     }
 

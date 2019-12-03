@@ -3,7 +3,10 @@ server:
 
 spring:
   profiles:
-    active: prod
+    active: dev
+  mvc:
+    static-path-pattern:
+  resources:
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver

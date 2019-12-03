@@ -60,6 +60,14 @@ public class ListFileUtil {
             "468][048]|[13579][26])|((0[48]|[2468][048]|[3579][26])00))0229)$";
 
     public static void main(String[] args) {
+
+        String s = "郑启阳-1011-20191126.docx";
+        System.out.println(Pattern.matches(dataPattern, s));
+        String div = s.replace(dataPattern
+                , "");
+
+
+        System.out.println(div);
         System.out.println(Pattern.matches(dataPattern, "-20190109"));
     }
 }

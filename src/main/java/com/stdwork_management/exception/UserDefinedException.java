@@ -13,6 +13,7 @@ import java.util.List;
  **/
 public class UserDefinedException extends RuntimeException {
 
+    private static final long serialVersionUID = 2357731261050504950L;
     Result result = new Result();
 
     public UserDefinedException(Integer code, String message) {

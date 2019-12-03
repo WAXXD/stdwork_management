@@ -27,6 +27,16 @@ public class RedisUtils {
         operations.set(getKey(key), value);
     }
 
+    public <T> T getAndUpdateExpire(String key){
+        if (redisTemplate.hasKey(getKey(key))) {
+            ValueOperations operations = redisTemplate.opsForValue();
+            T t = (T) operations.get(getKey(key));
+            redisTemplate.expire(getKey(key), 30 * 60, TimeUnit.SECONDS);
+            return t;
+        }
+        return null;
+    }
+
     public <T> T get(String key) {
         if (redisTemplate.hasKey(getKey(key))) {
             ValueOperations operations = redisTemplate.opsForValue();

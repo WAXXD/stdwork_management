@@ -47,8 +47,6 @@ public class PropertiesUtils {
         System.out.println(property);
         System.out.println(String.format(property,"s","s","sss"));
 
-
-
     }
 
 }

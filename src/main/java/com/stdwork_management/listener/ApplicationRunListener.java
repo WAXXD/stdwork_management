@@ -36,11 +36,11 @@ public class ApplicationRunListener implements ApplicationListener<ContextRefres
             localFileSysPO.setPath(workPath);
             List<LocalFileSysPO> localFileSysPOList = localFileSysMapper.select(localFileSysPO);
             if (localFileSysPOList.size() == 0){
-                log.info("不存在，初始化数据库表-> {}", localFileSysPO);
+                log.info("不存在，初始化数据库表-> [ {} ]", localFileSysPO);
                 localFileSysMapper.insert(localFileSysPO);
                 log.info("初始化成功");
             } else {
-                log.info("存在不需要初始化{} -> {}",localFileSysPOList.size(), localFileSysPOList.get(0));
+                log.info("存在不需要初始化[ {} ] -> [ {} ]",localFileSysPOList.size(), localFileSysPOList.get(0));
             }
         }
     }

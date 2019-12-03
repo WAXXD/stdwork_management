@@ -9,8 +9,8 @@ package com.stdwork_management.utils;
  **/
 
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.springframework.stereotype.Component;
 
 import java.io.*;
@@ -90,7 +90,6 @@ public class ZipFilesUtil {
                 e.printStackTrace();
             }
         }
-
     }
 
     public static void toZip(String zipName) throws FileNotFoundException {
@@ -156,9 +155,15 @@ public class ZipFilesUtil {
                 if(isDir){
                     dirPath = destPath + "/" + entry.getName();
                 } else {
+//                    String tempName = StringUtils.replace(unZipFileName, "$$.zip", "");
+//                    String[] split = tempName.split("\\.");
+//                    dirPath = destPath + "/" + split[0] + "-" + currentDay + "." + split[1];
+
                     String tempName = StringUtils.replace(unZipFileName, "$$.zip", "");
-                    String[] split = tempName.split("\\.");
-                    dirPath = destPath + "/" + split[0] + "-" + currentDay + "." + split[1];
+                    String fn = tempName.substring(0, tempName.lastIndexOf("."));
+                    String suffix = tempName.substring(tempName.lastIndexOf("."));
+//                    destPath = unzipDestPath + dest + "/" + fn + "-" + currentDay + suffix;
+                    dirPath = destPath + "/" + fn + "-" + currentDay + suffix;
                 }
 
                 if (entry.isDirectory()) {
@@ -231,16 +236,18 @@ public class ZipFilesUtil {
 //            return false;
 //        });
         File srcFile = new File(unzipBasePath + dest + "/temp/" + unZipFileName);
-        if (!srcFile.exists()) {
-            throw new RuntimeException(srcFile.getPath() + "所指文件不存在");
-        }
+//        if (!srcFile.exists()) {
+//            throw new RuntimeException(srcFile.getPath() + "所指文件不存在");
+//        }
         String fileName = srcFile.getName();
         String currentDay = new SimpleDateFormat("yyyyMMdd").format(new Date());
         String destPath;
+
         if(!isDir){
             String tempName = StringUtils.replace(unZipFileName, "$$.zip", "");
-            String[] split = tempName.split("\\.");
-            destPath = unzipDestPath + dest + "/" + split[0] + "-" + currentDay + "." + split[1];
+            String fn = tempName.substring(0, tempName.lastIndexOf("."));
+            String suffix = tempName.substring(tempName.lastIndexOf("."));
+            destPath = unzipDestPath + dest + "/" + fn + "-" + currentDay + suffix;
         } else {
             destPath = unzipDestPath + dest + "/" + fileName.substring(0, fileName.lastIndexOf(".")) + "-" + currentDay;
         }
@@ -263,8 +270,13 @@ public class ZipFilesUtil {
 
 
     public static void main(String[] args) throws FileNotFoundException {
-        toZip("");
+//        createUnzipDir("00042901普华达11.27.xlsx", "");
 
+        try {
+            FileUtils.forceDeleteOnExit(new File("M:\\z01\\新建文本文档 - 副本 (2).txt"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 

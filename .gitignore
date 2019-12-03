@@ -34,3 +34,15 @@ build/
 
 ### VS Code ###
 .vscode/
+log/stdwork.log.2019-11-13.0.gz
+log/stdwork.log.2019-11-14.0.gz
+log/stdwork.log.2019-11-15.0.gz
+log/stdwork.log.2019-11-16.0.gz
+log/stdwork.log.2019-11-20.0.gz
+log/stdwork.log.2019-11-22.0.gz
+log/stdwork.log.2019-11-25.0.gz
+src/main/java/com/stdwork_management/utils/JasyptUtil.java
+src/main/resources/sch.sql
+src/main/resources/static/
+src/main/resources/templates/
+src/test/
