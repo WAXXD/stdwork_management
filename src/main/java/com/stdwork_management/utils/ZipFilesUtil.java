@@ -8,6 +8,7 @@ package com.stdwork_management.utils;
  * @date 2019-10-21
  **/
 
+import com.stdwork_management.bean.AdminPO;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringUtils;
@@ -257,7 +258,9 @@ public class ZipFilesUtil {
                 FileUtils.deleteDirectory(file);
                 file.mkdirs();
             } else {
-                FileUtils.forceDeleteOnExit(file);
+                if(file.exists()){
+                    FileUtils.forceDelete(file);
+                }
                 file.createNewFile();
             }
 
@@ -272,11 +275,20 @@ public class ZipFilesUtil {
     public static void main(String[] args) throws FileNotFoundException {
 //        createUnzipDir("00042901普华达11.27.xlsx", "");
 
-        try {
-            FileUtils.forceDeleteOnExit(new File("M:\\z01\\新建文本文档 - 副本 (2).txt"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        AdminPO adminPO = new AdminPO();
+        adminPO.setId("1113");
+        System.out.println(adminPO.hashCode());
+        System.out.println(false);
+//        try {
+//            FileUtils.forceDeleteOnExit(new File("M:\\z01\\新建文本文档 - 副本 (2).txt"));
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+
+//        Integer integer = new Integer(0xee);
+//        System.out.println(Integer.toString(0xee, 10));
+//        System.out.println(Integer.valueOf("ee", 16));
+//        System.out.println(integer);
 
     }
 

@@ -146,11 +146,19 @@ public class BackEndController {
         if (adminPOS == null || adminPOS.size() < 1){
             throw new UserDefinedException(9999, "登录失败管理员名称或密码错误");
         }
-
         log.info("后台用户[ {} ]登录到系统", adminLoginVO.getAdminName());
-        String token = MD5Util.getMD5(adminPOS.get(0).toString() + new Date().getTime());
+        AdminPO admin = adminPOS.get(0);
+        String token = MD5Util.getMD5(admin.toString() + new Date().getTime());
+        String adminHash = String.valueOf(admin.getAdminName().hashCode());
+        String preToken = redisUtils.get(adminHash);
+        if(StringUtils.isNotBlank(preToken)) {
+            redisUtils.set(preToken, "na", 1, TimeUnit.DAYS);
+            redisUtils.delete("admin_user-" + preToken);
+            redisUtils.delete(adminHash);
+        }
         redisUtils.set(token, token, 30 * 60, TimeUnit.SECONDS);
-        redisUtils.set(  "admin_user-" + token , adminPOS.get(0), 30 * 60, TimeUnit.SECONDS);
+        redisUtils.set(adminHash, token, 30 * 60, TimeUnit.SECONDS);
+        redisUtils.set(  "admin_user-" + token , admin, 30 * 60, TimeUnit.SECONDS);
 //        request.getSession().setAttribute("admin_token",token);
 //        request.getSession().setAttribute("admin_user", adminPOS.get(0));
 //        request.getSession().setMaxInactiveInterval(30 * 60);

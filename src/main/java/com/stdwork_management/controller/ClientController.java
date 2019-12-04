@@ -105,76 +105,76 @@ public class ClientController {
     }
 
 
-    @PostMapping("uploadStdFile")
-    @ApiIgnore
-    public String upload(HttpServletRequest request, String dest){
-        MultipartHttpServletRequest multipartHttpServletRequest = null;
-        if(request instanceof MultipartHttpServletRequest){
-            multipartHttpServletRequest = (MultipartHttpServletRequest) request;
-        }
-        UploadFileUtil.multiUpload(request, dest);
-        Map<String, MultipartFile> fileMap = multipartHttpServletRequest.getFileMap();
-        Collection<MultipartFile> values = fileMap.values();
-
-        List<LocalFileSysPO> localFileSysPOList = new ArrayList<>();
-        LocalFileSysPO sysPO = new LocalFileSysPO();
-        sysPO.setPath(workPath + dest);
-        List<LocalFileSysPO> sysPOList = localFileSysMapper.select(sysPO);
-        values.stream().forEach(item -> {
-            String filename = item.getOriginalFilename();
-            String unzipDir = ZipFilesUtil.createUnzipDir(filename, dest);
-            boolean isDir = StringUtils.contains(filename, "$$") ? false : true;
-            LocalFileSysPO localFileSysPO = new LocalFileSysPO();
-            if(isDir){
-                localFileSysPO.setType((byte) 0);
-
-            } else {
-                localFileSysPO.setType((byte) 1);
-            }
-            localFileSysPO.setPath(unzipDir);
-            localFileSysPO.setFilename(unzipDir.substring(unzipDir.lastIndexOf("/") + 1));
-            localFileSysPO.setParentPath(workPath + dest);
-            localFileSysPO.setLevel((byte) 3);
-            localFileSysPO.setCreateTime(new Date());
-            localFileSysPO.setPid(sysPOList.get(0).getId());
-            localFileSysPO.setId(UUIDUtil.getUUID());
-            localFileSysPOList.add(localFileSysPO);
-
-        });
-        Condition condition = new Condition(LocalFileSysPO.class);
-        Example.Criteria criteria = condition.or();
-        localFileSysPOList.forEach(po -> criteria.orLike("path", po.getPath().substring(0, po.getPath().lastIndexOf("-") + 1) + "%"));
-        List<LocalFileSysPO> collect = Optional.ofNullable(localFileSysMapper.selectByCondition(condition)).orElse(new ArrayList<>()).stream()
-                .filter(po -> {
-
-                        if (localFileSysPOList.stream().map(LocalFileSysPO::getPath).collect(Collectors.toList()).contains(po.getPath())) {
-                            return true;
-                        } else {
-                            try {
-                                FileUtils.forceDelete(new File(po.getPath()));
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                            return false;
-                        }
-
-                }).collect(Collectors.toList());
-
-        collect.forEach( po -> localFileSysMapper.delete(po));
-//        localFileSysMapper.deleteByCondition(condition);
-        localFileSysMapper.insertList(localFileSysPOList);
-        asyncServiceExecutor.execute(() -> {
-            values.stream().forEach( item -> ZipFilesUtil.unZip(item.getOriginalFilename(), dest));
-            try {
-                FileUtils.cleanDirectory(new File(workPath + dest + "/temp"));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
-        String remoteAddr = request.getRemoteAddr();
-        localFileSysPOList.forEach( item -> log.info("[ {} ]用户上传了文件[ {} ]", remoteAddr, item.getFilename()));
-        return "ok";
-    }
+//    @PostMapping("uploadStdFile")
+//    @ApiIgnore
+//    public String upload(HttpServletRequest request, String dest){
+//        MultipartHttpServletRequest multipartHttpServletRequest = null;
+//        if(request instanceof MultipartHttpServletRequest){
+//            multipartHttpServletRequest = (MultipartHttpServletRequest) request;
+//        }
+//        UploadFileUtil.multiUpload(request, dest);
+//        Map<String, MultipartFile> fileMap = multipartHttpServletRequest.getFileMap();
+//        Collection<MultipartFile> values = fileMap.values();
+//
+//        List<LocalFileSysPO> localFileSysPOList = new ArrayList<>();
+//        LocalFileSysPO sysPO = new LocalFileSysPO();
+//        sysPO.setPath(workPath + dest);
+//        List<LocalFileSysPO> sysPOList = localFileSysMapper.select(sysPO);
+//        values.stream().forEach(item -> {
+//            String filename = item.getOriginalFilename();
+//            String unzipDir = ZipFilesUtil.createUnzipDir(filename, dest);
+//            boolean isDir = StringUtils.contains(filename, "$$") ? false : true;
+//            LocalFileSysPO localFileSysPO = new LocalFileSysPO();
+//            if(isDir){
+//                localFileSysPO.setType((byte) 0);
+//
+//            } else {
+//                localFileSysPO.setType((byte) 1);
+//            }
+//            localFileSysPO.setPath(unzipDir);
+//            localFileSysPO.setFilename(unzipDir.substring(unzipDir.lastIndexOf("/") + 1));
+//            localFileSysPO.setParentPath(workPath + dest);
+//            localFileSysPO.setLevel((byte) 3);
+//            localFileSysPO.setCreateTime(new Date());
+//            localFileSysPO.setPid(sysPOList.get(0).getId());
+//            localFileSysPO.setId(UUIDUtil.getUUID());
+//            localFileSysPOList.add(localFileSysPO);
+//
+//        });
+//        Condition condition = new Condition(LocalFileSysPO.class);
+//        Example.Criteria criteria = condition.or();
+//        localFileSysPOList.forEach(po -> criteria.orLike("path", po.getPath().substring(0, po.getPath().lastIndexOf("-") + 1) + "%"));
+//        List<LocalFileSysPO> collect = Optional.ofNullable(localFileSysMapper.selectByCondition(condition)).orElse(new ArrayList<>()).stream()
+//                .filter(po -> {
+//
+//                        if (localFileSysPOList.stream().map(LocalFileSysPO::getPath).collect(Collectors.toList()).contains(po.getPath())) {
+//                            return true;
+//                        } else {
+//                            try {
+//                                FileUtils.forceDelete(new File(po.getPath()));
+//                            } catch (IOException e) {
+//                                e.printStackTrace();
+//                            }
+//                            return false;
+//                        }
+//
+//                }).collect(Collectors.toList());
+//
+//        collect.forEach( po -> localFileSysMapper.delete(po));
+////        localFileSysMapper.deleteByCondition(condition);
+//        localFileSysMapper.insertList(localFileSysPOList);
+//        asyncServiceExecutor.execute(() -> {
+//            values.stream().forEach( item -> ZipFilesUtil.unZip(item.getOriginalFilename(), dest));
+//            try {
+//                FileUtils.cleanDirectory(new File(workPath + dest + "/temp"));
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        });
+//        String remoteAddr = request.getRemoteAddr();
+//        localFileSysPOList.forEach( item -> log.info("[ {} ]用户上传了文件[ {} ]", remoteAddr, item.getFilename()));
+//        return "ok";
+//    }
 
     @GetMapping("selectDest")
     public Result selectDest(){

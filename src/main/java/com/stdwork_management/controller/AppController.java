@@ -79,16 +79,25 @@ public class AppController {
             log.info("登录失败用户名或密码错误");
             throw new UserDefinedException(9999, "登录失败用户名或密码错误");
         }
-        if(stdAccountPOS.get(0).getGraduated() == 1) {
+        StdAccountPO stdAccountPO = stdAccountPOS.get(0);
+        if(stdAccountPO.getGraduated() == 1) {
             log.info("已毕业此账号不能使用");
             throw new UserDefinedException(9999, "已毕业此账号不能使用");
         }
-        log.info("[ {} ]同学登录到系统", stdAccountPOS.get(0).getName());
-        String token = MD5Util.getMD5(stdAccountPOS.get(0).toString() + new Date().getTime());
+        log.info("[ {} ]同学登录到系统", stdAccountPO.getName());
+        String token = MD5Util.getMD5(stdAccountPO.toString() + new Date().getTime());
+        String stdHash = String.valueOf(stdAccountPO.getStdNo().hashCode());
+        String preToken = redisUtils.get(stdHash);
+        if(StringUtils.isNotBlank(preToken)) {
+            redisUtils.set(preToken, "na", 1, TimeUnit.DAYS);
+            redisUtils.delete("user-" + preToken);
+            redisUtils.delete(stdHash);
+        }
 //        request.getSession().setAttribute("token",token);
 //        request.getSession().setAttribute("user", stdAccountPOS.get(0));
         redisUtils.set(token, token, 30 * 60, TimeUnit.SECONDS);
-        StdAccountPO po = stdAccountPOS.get(0);
+        redisUtils.set(stdHash, token, 30 * 60, TimeUnit.SECONDS);
+        StdAccountPO po = stdAccountPO;
         redisUtils.set("user-" + token, po, 30 * 60, TimeUnit.SECONDS);
 //        request.getSession().setMaxInactiveInterval(30 * 60);
         Map<String, Object> map = new HashMap<>();

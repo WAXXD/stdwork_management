@@ -59,7 +59,10 @@ public class AuthorizeInterceptor implements HandlerInterceptor {
                 } else {
                     throw new UserDefinedException(99999999, "您未登录到系统,请登录后访问");
                 }
-
+                if(StringUtils.equals(cachedToken, "na")){
+                    redisUtils.delete(token);
+                    throw new UserDefinedException(999999999, "您的账户已在别处登录，请重新登录");
+                }
                 if(StringUtils.isNotBlank(token) && token != null){
                     if(StringUtils.equals(token,  cachedToken) || StringUtils.equals(cachedToken, tokenFromCookie)){
                         if(user == null){
